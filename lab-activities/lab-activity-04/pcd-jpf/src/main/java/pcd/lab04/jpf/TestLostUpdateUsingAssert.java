@@ -1,9 +1,10 @@
 package pcd.lab04.jpf;
 
 /**
- * Check lost update race using precise race detector
+ * TODO: Check lost update race using asserts..
+ * 
  */
-public class TestLostUpdate {
+public class TestLostUpdateUsingAssert {
 
 	static class Counter {
 		private int count;
@@ -13,7 +14,8 @@ public class TestLostUpdate {
 		}
 		
 		public void inc(){
-			count++;
+			int tmp = count;
+			count = tmp + 1;
 		}
 		
 		public int getCount(){
@@ -33,6 +35,11 @@ public class TestLostUpdate {
 		}		
 	}	
 	
+	/**
+	 * 
+	 * TO BE COMPLETED.
+	 * 
+	 */
 	public static void main(String[] args) throws Exception {
 		
 		Counter c = new Counter();
@@ -41,7 +48,7 @@ public class TestLostUpdate {
 		th0.start();
 		th1.start();
 		th0.join();
-		th1.join();		
+		th1.join();
 	}
 	
 }

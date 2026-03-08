@@ -18,6 +18,7 @@ public class Worker extends BaseAgent {
 				resA.use();
 				synchronized (resB) {
 					resA.use();
+					waitAbit();
 				}
 			}
 		}
