@@ -23,7 +23,7 @@ class MyMonitor {
 
 public class TestVT {
 	
-	public static void main(String[] args) throws Exception {
+	static void main(String[] args) throws Exception {
 
 		log("Launching.. " + Thread.currentThread());
 		

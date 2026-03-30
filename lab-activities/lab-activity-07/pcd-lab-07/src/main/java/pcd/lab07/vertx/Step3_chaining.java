@@ -16,6 +16,7 @@ class TestChain extends VerticleBase {
 	public Future<?> start() throws Exception {
 		FileSystem fs = vertx.fileSystem();    		
 
+        // .compose è il metodo con cui posso concatenare
 		fs.readFile("hello.md")
 		.compose((Buffer buf) -> {
 			log("1 - hello.md: \n" + buf.toString());

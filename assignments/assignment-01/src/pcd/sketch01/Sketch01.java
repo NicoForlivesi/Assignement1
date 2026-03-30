@@ -54,16 +54,16 @@ public class Sketch01 {
 			long elapsed = System.currentTimeMillis() - lastUpdateTime;
 			lastUpdateTime = System.currentTimeMillis();			
 			board.updateState(elapsed);
-			
-			/* render */
-			
+            // Aggiorno lo stato ogni elapsed aggiornando le posizioni e facendo il check delle collisioni
+
+            /* render */
 			nFrames++;
 			int framePerSec = 0;
 			long dt = (System.currentTimeMillis() - t0);
 			if (dt > 0) {
 				framePerSec = (int)(nFrames*1000/dt);
 			}
-
+            // Vengono trasmesse le modifiche di aggiornamento di stato a schermo (rendering).
 			viewModel.update(board, framePerSec);			
 			view.render();
 			

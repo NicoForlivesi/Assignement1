@@ -22,6 +22,7 @@ public class QuadratureService extends Thread {
 		for (int i = 0; i < numTasks; i++) {
 			try {
 				Future<Double> res = executor.submit(new ComputeAreaTask(x0, x0 + step, mf));
+                // Il metodo submit restituisce una Future che rappresenta il risultato che sarà
 				results.add(res);
 				log("submitted task " + x0 + " " + (x0+step));
 				x0 += step;
@@ -33,7 +34,7 @@ public class QuadratureService extends Thread {
 	    double sum = 0;
 	    for (Future<Double> res: results) {
 	    	try {
-	    		sum += res.get();
+	    		sum += res.get(); // Qui si blocca finchè res non ha effettivamente il risultato
 	    	} catch (Exception ex){
 	    		ex.printStackTrace();
 	    	}

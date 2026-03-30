@@ -4,7 +4,7 @@ import java.util.concurrent.Callable;
 
 
 public class ComputeAreaTask implements Callable<Double>  {
-
+    // Non compaiono le futures, qui si assegna solo il lavoro, compariranno poi in QuadratureService
 	private IFunction mf;
 	private double a, b;
 

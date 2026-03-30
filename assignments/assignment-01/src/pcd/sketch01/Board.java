@@ -18,10 +18,10 @@ public class Board {
     
     public void updateState(long dt) {
 
-    	playerBall.updateState(dt, this);
+    	playerBall.updateState(dt, this); // aggiorno pos della playerBall
     	
     	for (var b: balls) {
-    		b.updateState(dt, this);
+    		b.updateState(dt, this); // aggiorno pos di tutte le altre palline
     	}       	
     	
     	for (int i = 0; i < balls.size() - 1; i++) {
