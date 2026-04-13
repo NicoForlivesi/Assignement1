@@ -15,7 +15,9 @@ class TestExecBlocking extends VerticleBase {
 	public Future<?> start() throws Exception {
 		log("before");
 
-		Future<Integer> res = this.vertx.executeBlocking(() -> {
+		Future<Integer> res = this.vertx.executeBlocking(() -> { // Questa lambda viene mandata in eseuzione su
+            // un background thread, però attenzione normalmente il background thread è uno solo, se mandassimo due exeuteBlocking
+            // verrebbero messe in coda su un unico backgoround thread (vedi es Step6b)
 			// Call some blocking API that takes a significant amount of time to return
 			log("blocking computation started");
 			try {

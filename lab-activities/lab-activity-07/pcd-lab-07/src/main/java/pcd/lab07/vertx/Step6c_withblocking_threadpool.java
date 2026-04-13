@@ -30,7 +30,8 @@ class TestExecBlocking3 extends VerticleBase {
 				/* notify failure */
 				throw new Exception("exception");
 			}
-		}, false);
+		}, false); // Ora che le due esecuzioni vengono eseguite veramente in maniera parallela dobbiamo specificare
+        // se ci interessa l'ordine (in questo caso no)
 
 		Future<Integer> f2 = this.vertx.executeBlocking(() -> {
 			// Call some blocking API that takes a significant amount of time to return
@@ -51,12 +52,15 @@ class TestExecBlocking3 extends VerticleBase {
 		// x++;
 
 		Future
-		.all(f1,f2)
+		.all(f1,f2) // Ora vengono eseguiti veramente in parallelo
 		.onComplete(r -> {
 			for (var res: r.result().list()){
 				log("result: " + res);
 			}
 		});
+        // Attenzione però: executeBlocking delega ad un backgorund thread che però anche questo genera eccezioni
+        // nel caso in compiti delegato impieghi troppo tempo ... è possibile crearne uno personalizzato creato a mano
+        // il background thread (vedi Step6d)
 		
 		return super.start();
 	}

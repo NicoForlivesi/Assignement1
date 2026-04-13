@@ -66,7 +66,9 @@ public class Test03a_sched_subscribeon {
 					return w * w; 
 				})		
 		  )
-		  .blockingSubscribe(v -> {
+		  .blockingSubscribe(v -> { // Come prima voglio fare la subscribe, ma ora l'osservazione dei flussi che
+              // vengono generati dinamicamente la voglio fare con un unico thread, nello specifico usa per osservarli lo
+              // stesso thread che chiama .blockingsubscribe (in questo caso il main)
 			 log("sub > " + v); 
 		  });
 		

@@ -5,8 +5,12 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/lab-activities/lab-activity-06/pcd-lab-06/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/lab-activities/lab-activity-07/pcd-lab-07/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lab-activities/lab-activity-08/pcd-lab-08/src/main/java" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: io.vertx:vertx-core:5.0.10" level="project" />
+    <orderEntry type="library" name="Maven: io.vertx:vertx-web:5.0.10" level="project" />
+    <orderEntry type="library" name="Maven: io.reactivex.rxjava3:rxjava:3.1.8" level="project" />
   </component>
 </module>

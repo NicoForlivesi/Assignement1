@@ -31,6 +31,8 @@ public class Test03b_sched_observeon {
 		Observable.just(100)	
 			.map(v -> { log("map 1 " + v); return v * v; })		// by the current thread (main thread)
 			.observeOn(Schedulers.computation()) 				// => use RX comp thread(s) downstream
+                // Chiamato observeOn, tutte le computazioni eseguite in stati successivi vengono eseguite sullo scheduler
+                // specificato come argomento di observeOn
 			.map(v -> { log("map 2 " + v); return v + 1; })		// by the RX comp thread
 			.subscribe(v -> {						// by the RX comp thread
 				log("sub " + v);

@@ -16,13 +16,15 @@ class MyReactiveAgent extends VerticleBase {
 	  private int cycle;
 	
 	  // Called when verticle is deployed
-	  public Future<?> start() throws Exception {
+	  public Future<?> start() throws Exception { // Questa future è l'equivalente di una promise, non è la future
+          // di java.util che è bloccante, qui non c'è niente di bloccante
 		cycle = 0;
 	
 		log("1 (cycle: " + cycle + ") - doing the async call...");
 		
 		FileSystem fs = this.vertx.fileSystem();    				
-		Future<Buffer> f1 = fs.readFile("hello.md");
+		Future<Buffer> f1 = fs.readFile("hello.md"); //readFile metodo asincrono che restituisce una promise (Future
+          //<Buffer>)
 		f1.onComplete((AsyncResult<Buffer> res) -> {
 			cycle++;			
 			log("4 (cycle: " + cycle + ") - hello.md \n" + res.result().toString());

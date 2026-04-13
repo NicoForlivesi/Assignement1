@@ -9,7 +9,8 @@ public class Test02d_creation_hot {
 	public static void main(String[] args) throws Exception {
 
 		System.out.println("\n=== TEST Hot streams  ===\n");
-		
+
+        // Si creano i flussi come prima con create
 		Observable<Integer> source = Observable.create(emitter -> {		     
 			new Thread(() -> {
 				int i = 0;
@@ -24,7 +25,8 @@ public class Test02d_creation_hot {
 			}).start();
 		     //emitter.setCancellable(c::close);
 		 });
-		
+
+        // Chiamando .publish si crea un flusso "HOT"
 		ConnectableObservable<Integer> hotObservable = source.publish();
 		hotObservable.connect();
 	

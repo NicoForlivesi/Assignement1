@@ -8,6 +8,7 @@ public class Test02b_creation_async {
 
 		log("Creating an observable (cold) using its own thread.");
 
+        // Cosa succede se dentro create creo un thread che genera i primi 20 elementi e li metto nel flusso?
 		Observable<Integer> source = Observable.create(emitter -> {		     
 			new Thread(() -> {
 				int i = 0;
@@ -41,7 +42,7 @@ public class Test02b_creation_async {
 
 		log("Done.");
 	}
-	
+	// Lo stream è cold, visto che ho due .subscription vengono creati due thread diversi
 	static private void log(String msg) {
 		System.out.println("[ " + Thread.currentThread().getName() + "  ] " + msg);
 	}

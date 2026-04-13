@@ -52,7 +52,8 @@ class TestExecBlocking2 extends VerticleBase {
 		// x++;
 
 		Future
-		.all(f1,f2)
+		.all(f1,f2) // Non vengono fatti in modo parallelo è lo stesso background thread che deve gestire entrambi
+                // gli eventi bloccanti, c'è però una soluzione (vedi es 6c)
 		.onComplete(r -> {
 			for (var res: r.result().list()){
 				log("result: " + res);

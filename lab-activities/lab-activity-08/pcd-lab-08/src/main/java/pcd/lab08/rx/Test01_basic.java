@@ -11,8 +11,8 @@ public class Test01_basic {
 		log("creating with just.");
 		
 	    Observable
-	    .just("Hello world")
-	    .subscribe(s -> {	    		
+	    .just("Hello world") // Creo un flusso che ha un singolo elemento: Una stringa "Hello World"
+	    .subscribe(s -> {	 // Prende tutti gli elementi presenti nell'Observable ed esegue la lambda
 	    		log(s);    		
 	    });
 	    
@@ -41,7 +41,8 @@ public class Test01_basic {
 				log("> " + s);
 			},(Throwable t) -> {
 				log("error  " + t);
-			},() -> {
+			},() -> { // Questa terza lambda indica cosa vogliamo fare quando lo stream viene chiuso, per come sono
+                // definiti gli stream devono avere sempre una chiusura finale
 				log("completed");
 			});
 		
@@ -56,14 +57,15 @@ public class Test01_basic {
 			.filter(v -> v % 3 == 0);
 		
 		log("first subscription #1");
-		flow.subscribe(System.out::println);
+		flow.subscribe(System.out::println); // In realtà gli elementi vengono effettivamente generati solo quando chiamo
+        // .subscribe, finchè scrivo solo Flowable sto solo defininend il generatore
 
 		log("first subscription #2");
 		flow.subscribe((v) -> {
 			log("" + v);
 		});
 
-		// doOnNext for debugging...
+		// doOnNext for debugging... (molto utile per il debbuging)
 		
 		log("showing the flow...");
 		

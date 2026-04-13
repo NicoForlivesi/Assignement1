@@ -40,12 +40,14 @@ public class Test04a_swing_pubsub {
 			new MyFrame(clickStream);
 		});
 
+        // Gestione caso click
 		clickStream
 			.observeOn(Schedulers.computation())
 			.subscribe((v) -> {
 				System.out.println(Thread.currentThread().getName() + "click: "+System.currentTimeMillis());
 			});
 
+        // Gestione caso multiclick
 		clickStream
 			.buffer(clickStream.throttleWithTimeout(250, TimeUnit.MILLISECONDS))
 			.map(xs -> xs.size())

@@ -12,7 +12,7 @@ class VerticleWithPromise extends VerticleBase {
 	
 	public Future<?> start() throws Exception {
 		log("started.");	
-		var fut = this.getDelayedRandom(1000);
+		var fut = this.getDelayedRandom(1000); // Restituisce subito la feature
 		fut.onComplete((res) -> {
 			System.out.println("Result: " + res.result());	
 		});
@@ -28,14 +28,19 @@ class VerticleWithPromise extends VerticleBase {
 	 * 
 	 * @param delay
 	 * @return
+     * Esempio di metodo asincrono che aspetta un tempo casuale
+     * e restituisce un numero casuale in output.
+     * In questa funzione ce la creazione ad hoc di una promise che creiamo noi, data una promise è possibile ottenere
+     * la future corrispondente
 	 */
 	protected Future<Double> getDelayedRandom(int delay){
 		Promise<Double> promise = Promise.promise();
 		this.vertx.setTimer(delay, (res) -> {
+            //Callback quando la promise è stata completata
 			var num = Math.random();
 			promise.complete(num);
 		});
-		return promise.future();
+		return promise.future(); // Restituisco subito la Future (associata alla promise)
 	}
 	
 	private void log(String msg) {

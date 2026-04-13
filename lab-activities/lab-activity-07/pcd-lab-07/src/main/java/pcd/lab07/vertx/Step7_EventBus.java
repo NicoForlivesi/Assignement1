@@ -7,7 +7,7 @@ class MyAgent1 extends VerticleBase {
 	
 	 public Future<?> start() throws Exception {
 		log("started.");
-		EventBus eb = vertx.eventBus();
+		EventBus eb = vertx.eventBus(); // eventBus condiviso su tutti i vertical
 		eb.consumer(Step7_EventBus.TOPIC_NAME, message -> {
 			log("received new message: " + message.body());
 		});		

@@ -1,7 +1,8 @@
 package pcd.lab08.rx;
 
 import io.reactivex.rxjava3.core.*;
-
+// La programmazione reattiva da un certo punto di vista rappresenta una generalizzazione della programmazione
+// asincrona in cui non abbiamo un solo risultato ma diversi nel tempo.
 public class Test02c_creation_fromCallable {
 
 	public static void main(String[] args) throws Exception {

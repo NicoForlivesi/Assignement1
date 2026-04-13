@@ -1,6 +1,6 @@
 PCD a.y. 2024-2025 - ISI LM UNIBO - Cesena Campus
 
-# Assignment #02 -  `FSStat`
+# Assignment #02 -  `FSStat` (Spiegazione 13/04/2026)
 
 v1.0.0-20260412
 
@@ -11,7 +11,12 @@ The library and the example program must be developed using the three different 
 2. Reactive programming using Rx
 3. Virtual Threads
 
-**Important remark**: each version should be designed focussing exclusively on the programming discipline that characterises each approach. That is: don't generalise or reuse code when this would negatively impact on the design and programming discipline promoted by each individual approach.
+**Important remark**: 
+-Programmazione asincrona basata su eventLoop
+-Porgrammazione reattiva
+-Virtual thread
+
+each version should be designed focussing exclusively on the programming discipline that characterises each approach. That is: don't generalise or reuse code when this would negatively impact on the design and programming discipline promoted by each individual approach.
 
 ### Details
 
@@ -21,7 +26,7 @@ The asynchronous method `getFSReport` must compute some statistics about the siz
 
 `D`, `MaxFS`, `NB`are parameters of the method. 
 
-### Optional point [*]
+### Optional point [*] _+ -> Serve per il 30L
 
 Develop an *interactive* extension of the library, which should provide the possibility to:
 - possibly stop the generation of a report;
