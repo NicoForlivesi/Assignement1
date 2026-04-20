@@ -1,8 +1,8 @@
 package pcd.lab08.rx;
 
 import java.util.concurrent.TimeUnit;
-import io.reactivex.rxjava3.core.*;
-import io.reactivex.rxjava3.schedulers.Schedulers;
+
+import io.reactivex.rxjava3.core.Observable;
 
 public class Test05_time_flow {
 
@@ -17,7 +17,8 @@ public class Test05_time_flow {
         .doOnNext(v -> logDeb("1> " + v))
         .timestamp() 							// Timed
         .doOnNext(v -> logDeb("2> " + v))
-        .sample(500, TimeUnit.MILLISECONDS)
+        .sample(500, TimeUnit.MILLISECONDS) // Campionamento ogni 500ms sia che il flusso sotto sia HOT
+		// sia che sia cold
         .doOnNext(v -> logDeb("3> " + v))
 		.map(ts -> " " + (ts.time(TimeUnit.MILLISECONDS) - startTime) + " ms - value: " + ts.value())
         .doOnNext(v -> logDeb("4> " + v))

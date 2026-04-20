@@ -2,7 +2,8 @@ package pcd.lab08.rx;
 
 import java.util.Arrays;
 
-import io.reactivex.rxjava3.core.*;
+import io.reactivex.rxjava3.core.Flowable;
+import io.reactivex.rxjava3.core.Observable;
 
 public class Test01_basic {
 
@@ -106,3 +107,4 @@ public class Test01_basic {
 		System.out.println("[" + Thread.currentThread().getName() + "] " + msg);
 	}
 }
+

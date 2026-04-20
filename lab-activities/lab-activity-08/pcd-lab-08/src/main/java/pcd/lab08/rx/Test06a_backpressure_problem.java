@@ -1,6 +1,7 @@
 package pcd.lab08.rx;
 
-import io.reactivex.rxjava3.core.*;
+import io.reactivex.rxjava3.core.BackpressureStrategy;
+import io.reactivex.rxjava3.core.Flowable;
 import io.reactivex.rxjava3.flowables.ConnectableFlowable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
@@ -23,7 +24,7 @@ public class Test06a_backpressure_problem {
 			log("consuming " + v);
 			Thread.sleep(100);				// <------ creating a delay in consuming
 		}, error -> {
-			log("ERROR: " + error);
+			log("ERROR: " + error); // -> Lambda che reagisce ad eventali errori 
 		});
 
 		Thread.sleep(1000);
