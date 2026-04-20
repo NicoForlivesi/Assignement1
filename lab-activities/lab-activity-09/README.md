@@ -19,7 +19,10 @@ v1.0.0-20260417
              - [Calculus Sequential Processes (CSP)](https://en.wikipedia.org/wiki/Communicating_sequential_processes)    
              - [Calculus Communicating Systems (CCS)](https://en.wikipedia.org/wiki/Calculus_of_communicating_systems) [Brief Presentation Book](https://drive.google.com/file/d/1dmBBJCSw5SiZHNqkaInEcz7rhBY5jZYN/view?usp=sharing)   
              - [Pi-Calculus](https://en.wikipedia.org/wiki/%CE%A0-calculus)    
-    - Go Tutorials
+    - Go Concurrent Programming
       - [Go Concurrent Programming - Overview](https://go.dev/talks/2012/concurrency.slide#1)   
       - [Go Concurrent Programming - Advanced](https://go.dev/talks/2013/advconc.slide#1)   
-    - Go Concurrent Programming - some simple examples `go-conc-examples`
+      - Simple examples in lab
+        - folder on the repo: `go-conc-examples`
+    - **Proposed exercise**
+      - consider the `Exchange Value Problem` described in module-3.1 and implement the three solutions in Go.
