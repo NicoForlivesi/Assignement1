@@ -1,0 +1,63 @@
+The Vert.x APIs are largely event driven. This means that when things happen in Vert.x that you are interested in, Vert.x will call you by sending you events.
+
+Some example events are:
+
+a timer has fired
+
+some data has arrived on a socket,
+
+some data has been read from disk
+
+an exception has occurred
+
+an HTTP server has received a request
+
+You handle events by providing handlers to the Vert.x APIs. For example to receive a timer event every second you would do:
+
+vertx.setPeriodic(1000, id -> {
+  // This handler will get called every second
+  System.out.println("timer fired!");
+});
+
+Don’t block me!
+With very few exceptions (i.e. some file system operations ending in 'Sync'), none of the APIs in Vert.x block the calling thread.
+
+If a result can be provided immediately, it will be returned immediately, otherwise you will usually provide a handler to receive events some time later.
+
+Because none of the Vert.x APIs block threads that means you can use Vert.x to handle a lot of concurrency using just a small number of threads.
+
+With a conventional blocking API the calling thread might block when:
+
+Reading data from a socket
+
+Writing data to disk
+
+Sending a message to a recipient and waiting for a reply.
+In all the above cases, when your thread is waiting for a result it can’t do anything else - it’s effectively useless.
+This means that if you want a lot of concurrency using blocking APIs then you need a lot of threads to prevent your application grinding to a halt.
+Threads have overhead in terms of the memory they require (e.g. for their stack) and in context switching.
+For the levels of concurrency required in many modern applications, a blocking approach just doesn’t scale.
+
+The Golden Rule - Don’t Block the Event Loop
+We already know that the Vert.x APIs are non blocking and won’t block the event loop, but that’s not much help if you block the event loop yourself in a handler.
+
+If you do that, then that event loop will not be able to do anything else while it’s blocked. If you block all of the event loops in Vertx instance then your application will grind to a complete halt!
+
+So don’t do it! You have been warned.
+
+Examples of blocking include:
+
+Thread.sleep()
+
+Waiting on a lock
+
+Waiting on a mutex or monitor (e.g. synchronized section)
+
+Doing a long lived database operation and waiting for a result
+
+Doing a complex calculation that takes some significant time.
+
+Spinning in a loop
+
+If any of the above stop the event loop from doing anything else for a significant amount of time then you should
+go immediately to the naughty step, and await further instructions.
