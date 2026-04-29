@@ -8,7 +8,10 @@ import io.vertx.core.*;
  * using a Worker pool thread with multiple workers.
  * 
  * Blocking calls/tasks are executed concurrently. 
- *  
+ *  In questo esempio mandiamo sempre il metodo .executeBlocking 2 volte ma viene eseguito su due background thread
+ *  diversi!! Perchè? Come realizziamo ciò? Tramite un parametro quando facciamo il deploy di un verticle possiamo
+ *  specificare il numero di worker che quel verticle deve avere. Ora quando chiamiamo executeBlocking dobbiamo specificare
+ *  un secondo parametro che indica se vogliamo che le esecuzione delle parti di codice bloccanti siano eseguite in ordine.
  */
 class TestExecBlocking3 extends VerticleBase {
 
@@ -77,5 +80,7 @@ public class Step6c_withblocking_threadpool {
 		
 		int workerPoolSize = Runtime.getRuntime().availableProcessors();
 		vertx.deployVerticle(new TestExecBlocking3(), new DeploymentOptions().setWorkerPoolSize(workerPoolSize));
+        // new DeploymentOptions().setWorkerPoolSize(workerPoolSize) specifichiamo che questo verticle (aka event-loop)
+        // deve avere un numero di background thread sotto (worker) uguale al numero di core della macchina.
 	}
 }

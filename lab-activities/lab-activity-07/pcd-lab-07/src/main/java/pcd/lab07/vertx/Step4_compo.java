@@ -13,12 +13,14 @@ class TestCompo extends VerticleBase{
 	public Future<?> start() throws Exception {
 		FileSystem fs = vertx.fileSystem();    		
 		
-		Future<Buffer> f1 = fs.readFile("hello.md");
+		Future<Buffer> f1 = fs.readFile("hello.md"); // La lettura di questi due file parte
+        // parallelamente su due background thread diversi
 		Future<Buffer> f2 = fs.readFile("POM.xml");
-				
+
 		Future
 		.all(f1,f2) // Faccio qualcosa solo quando f1 ed f2 sono finiti
-		.onSuccess((CompositeFuture res) -> {
+		.onSuccess((CompositeFuture res) -> { // Non ho garanzia di quale sia l'ordine di completamento
+            // delle due future (a differenza del metodo .compose)
 			log("COMPOSITE => \n"+res.result().list());			
 		}); 
 		return super.start();

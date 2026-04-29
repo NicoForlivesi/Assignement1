@@ -11,6 +11,7 @@ import io.vertx.core.file.FileSystem;
  * Simple Verticle - i.e. an event-loop in Vert.x
  * L'uso di Verticle ci consente di compiere un incapsulamento efficiente: definiamo il componente attivo-reattivo,
  * ovvero un istanza della classe "MyReactiveAgent" che voglio associare ad un singolo event-loop.
+ * Tutto il codice che metto in un verticle ho la sicurezza che verrà eseguito dallo stesso event-loop
  */
 class MyReactiveAgent extends VerticleBase { // Deve estendere questa classe, il punto chiave è che so con certezza che
     // questo codice verrà eseguito sempre e solo da un event-loop, a differenza dell'esempio precedente qui è molto

@@ -7,8 +7,10 @@ class MyAgent1 extends VerticleBase {
 	
 	 public Future<?> start() throws Exception {
 		log("started.");
-		EventBus eb = vertx.eventBus(); // eventBus condiviso su tutti i vertical
-		eb.consumer(Step7_EventBus.TOPIC_NAME, message -> {
+		EventBus eb = vertx.eventBus(); // eventBus condiviso su tutti i vertical, l'eventBus ha l'architettura
+         // produttori-consumatori
+		eb.consumer(Step7_EventBus.TOPIC_NAME, message -> { // Topic-name indica il "canale" su cui
+            // vogliamo ascoltare, possono essere presenti più canali
 			log("received new message: " + message.body());
 		});		
 		log("Ready.");
@@ -38,7 +40,8 @@ class MyAgent2 extends AbstractVerticle {
 /**
  *  
  *  Using the event bus for reactive agents communication and interaction. 
- * 
+ * Qui andiamo a creare due event-loop e vediamo come questi possono comunicare, come abbiamo detto non devono avere
+ * memoria condivisa
  */
 public class Step7_EventBus {
 

@@ -9,7 +9,10 @@ import io.vertx.core.*;
  * 
  * The default size is 1 (only 1 background worker),
  * so all blocking calls are executed sequentially. 
- *  
+ *
+ *  Qui invece che fare una executeBlocking ne facciamo due, da qui si vede che ogni verticle ha un singolo background
+ *  thread, però se abbiamo due computazioni pesanti da eseguire vorremmo fossero eseguite in parallelo concorrentemente
+ *  in modo da rendere il tutto più efficiente
  */
 class TestExecBlocking2 extends VerticleBase {
 
