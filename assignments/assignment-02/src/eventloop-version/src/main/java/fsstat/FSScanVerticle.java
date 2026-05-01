@@ -58,8 +58,9 @@ public class FSScanVerticle extends VerticleBase {
      * Per ogni entry della directory:
      *   - se è un file -> aggiunge la sua size al report
      *   - se è una dir -> chiama ricorsivamente scanDirectory
-     * Le chiamate sulle subdirectory partono tutte in parallelo, delegate ai background threads,
+     * Le chiamate sulle subdirectory partono tutte in parallelo,
      * poi Future.all() controlla che siano tutte complete prima di fare il merge.
+     * Le chiamate a fs.readDir() e fs.props() sono operazioni asincrone di I/O che Vert.x delega ai background thread.
      *
      * scanDirectory viene chiamata una volta per ogni directory incontrata nell'albero e ogni chiamata crea la propria promise locale.
      * Ogni promise locale si completa quando il sottoalbero radicato in quella directory è stato completamente esplorato.

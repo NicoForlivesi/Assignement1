@@ -9,5 +9,8 @@
         <module name="pcd-lab-07" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="pcd-lab-07 (1)" target="21" />
+    </bytecodeTargetLevel>
   </component>
 </project>
