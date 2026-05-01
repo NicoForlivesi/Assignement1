@@ -1,45 +1,34 @@
 package fsstat;
 
-import io.vertx.core.Future;
-import io.vertx.core.Promise;
-import io.vertx.core.Vertx;
-
-import java.nio.file.Path;
+import io.vertx.core.*;
 
 public class FSStatLib {
 
-    private final Vertx vertx;
+    private final Vertx vertx = Vertx.vertx();
 
-    public FSStatLib(Vertx vertx) {
-        this.vertx = vertx;
+    /**
+     * Calcola in modo asincrono le statistiche sul filesystem della directory D.
+     *
+     * @param dir   La directory radice da scansionare (ricorsivamente)
+     * @param maxFS La dimensione massima di file considerata (in byte)
+     * @param nb    Il numero di fasce (bands) in cui suddividere [0, maxFS]
+     * @return      Una Future<FSReport> che si completerà con il report
+     */
+    public Future<FSReport> getFSReport(String dir, long maxFS, int nb) {
+        Promise<FSReport> promise = Promise.promise(); // Questa è la promise che sarà completata dal verticle quando
+        // la scansione finisce
+
+        // Deploya il Verticle che farà la scansione, quando finisce completa la promise
+        vertx.deployVerticle(new FSScanVerticle(dir, maxFS, nb, promise))
+                .onFailure(err -> promise.fail("Deploy failed: " + err.getMessage()));
+
+        return promise.future(); // Restituiamo subito la Future (non bloccante)
     }
 
     /**
-     * Asynchronous computation of filesystem statistics.
-     *
-     * @param dir   root directory
-     * @param maxFS max file size for banding
-     * @param nb    number of bands
-     * @return Future completed with FSReport
+     * Chiude l'istanza Vertx. Chiamare quando non si usa più la libreria.
      */
-    public Future<FSReport> getFSReport(Path dir, long maxFS, int nb) {
-        Promise<FSReport> promise = Promise.promise();
-
-        vertx.executeBlocking(promiseBlocking -> {
-            try {
-                FSReport report = FileScanner.scan(dir, maxFS, nb);
-                promiseBlocking.complete(report);
-            } catch (Exception e) {
-                promiseBlocking.fail(e);
-            }
-        }, res -> {
-            if (res.succeeded()) {
-                promise.complete((FSReport) res.result());
-            } else {
-                promise.fail(res.cause());
-            }
-        });
-
-        return promise.future();
+    public Future<Void> close() {
+        return vertx.close();
     }
 }
