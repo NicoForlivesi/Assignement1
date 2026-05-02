@@ -14,7 +14,7 @@ public class MainExample {
 
         String targetDir = "D:\\Programmi (x86)\\ Steam";
         Set<String> excluded = Set.of("logs"); // Directory da escludere dalla scansione
-        long maxFS = 1_000_000L; // 1 MB
+        long maxFS = 1_000_000L;
         int nb = 5;
 
         System.out.println("=== FSStatLib v1 — Event-loop (Vert.x) ===");

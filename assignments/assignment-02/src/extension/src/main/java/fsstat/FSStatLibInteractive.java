@@ -1,45 +1,72 @@
 package fsstat;
 
 import io.vertx.core.*;
+import io.vertx.core.eventbus.MessageConsumer;
+import io.vertx.core.json.JsonObject;
 
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Consumer;
 
+/**
+ * Estensione interattiva di FSStatLib con supporto a:
+ * - stop() per interrompere la scansione in corso
+ * - callback onUpdate chiamata dinamicamente durante la scansione
+ */
 public class FSStatLibInteractive {
 
     private final Vertx vertx = Vertx.vertx();
+    private final AtomicBoolean stopped = new AtomicBoolean(false); // Questa è l'unica variabile che viene
+    // condivisa fra il thread che chiama stop e l'event-loop, per questo motivo serve definirla atomica (cosa non necessaria
+    // per i campi del verticle sui quali abbiamo garanzia che può accedere solamente l'event-loop)
+    private MessageConsumer<?> updateConsumer;
 
     /**
-     * Calcola in modo asincrono le statistiche sul filesystem della directory D.
+     * Avvia la scansione e chiama onUpdate ogni UPDATE_EVERY file trovati.
      *
-     * @param dir   La directory radice da scansionare (ricorsivamente)
-     * @param maxFS La dimensione massima di file considerata (in byte)
-     * @param nb    Il numero di fasce (bands) in cui suddividere [0, maxFS]
-     * @return      Una Future<FSReport> che si completerà con il report
+     * @param dir   Directory radice
+     * @param maxFS        Dimensione massima file (byte)
+     * @param nb           Numero di fasce
+     * @param excludedDirs Directory da escludere per nome
+     * @param onUpdate     Callback chiamata con il report parziale aggiornato
+     * @return             Future<FSReportPartial> completata al termine (o allo stop)
      */
-    public Future<FSReport> getFSReport(String dir, long maxFS, int nb) {
-        return getFSReport(dir, maxFS, nb, Set.of()); // Se non vengono specificate directory da escludere viene richiamato
-        // il costruttore passando un empty set per quell'argomento
-    }
+    public Future<FSReportPartial> getFSReport(String dir, long maxFS, int nb,
+                                               Set<String> excludedDirs,
+                                               Consumer<FSReportPartial> onUpdate) {
+        stopped.set(false); // A ogni inizio di una nuova scansione viene risettato stopped a false nel caso la
+        // precedente fosse stata interrotta
+        Promise<FSReportPartial> promise = Promise.promise();
 
-    /**
-     * Come getFSReport, ma con la possibilità di escludere directory per nome.
-     *
-     * @param excludedDirs Nomi di directory da escludere (es. "AppData" per non incorrere in problemi derivanti dal O.S.)
-     */
-    public Future<FSReport> getFSReport(String dir, long maxFS, int nb, Set<String> excludedDirs) {
-        Promise<FSReport> promise = Promise.promise(); // Questa è la promise che sarà completata dal verticle quando
-        // la scansione finisce
+        // Registra il consumer sull'Event Bus PRIMA di deployare il verticle
+        // così non perdiamo nessun aggiornamento pubblicato dal verticle
+        updateConsumer = vertx.eventBus().consumer(
+                FSScanInteractiveVerticle.UPDATE_TOPIC,
+                msg -> onUpdate.accept(FSReportPartial.fromJson((JsonObject) msg.body()))
+        );
 
-        // Deploya il Verticle che farà la scansione, quando finisce completa la promise
-        vertx.deployVerticle(new FSScanVerticle(dir, maxFS, nb, promise, excludedDirs))
+        vertx.deployVerticle(new FSScanInteractiveVerticle(dir, maxFS, nb, promise, excludedDirs, stopped))
                 .onFailure(err -> promise.fail("Deploy failed: " + err.getMessage()));
 
-        return promise.future(); // Restituiamo subito la Future (non bloccante)
+        // Quando la scansione finisce (o viene stoppata) de-registriamo il consumer
+        promise.future().onComplete(res -> {
+            if (updateConsumer != null) updateConsumer.unregister();
+        });
+
+        return promise.future();
     }
 
     /**
-     * Chiude l'istanza Vertx. Chiamare quando non si usa più la libreria.
+     * Interrompe la scansione in corso settando l'AtomicBoolean a true.
+     * Il verticle lo controlla prima di ogni nuova directory e smette di
+     * lanciare chiamate ricorsive, completando la Future con il report parziale.
      */
+    public void stop() {
+        stopped.set(true);
+    }
+
+    public boolean isStopped() { return stopped.get(); }
+
     public Future<Void> close() {
         return vertx.close();
     }
