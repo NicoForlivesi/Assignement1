@@ -20,7 +20,7 @@ public class GUI extends JFrame {
 
     private static final long DEFAULT_MAX_FS = 1_000_000L;
     private static final int DEFAULT_NB = 8;
-    private static final Set<String> EXCLUDED = Set.of("logs");
+    private static final Set<String> EXCLUDED = Set.of("");
 
     private final FSStatLibInteractive lib = new FSStatLibInteractive();
 

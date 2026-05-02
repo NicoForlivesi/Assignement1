@@ -24,7 +24,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class FSScanInteractiveVerticle extends VerticleBase {
 
     public static final String UPDATE_TOPIC = "fs.update";
-    private static final int UPDATE_EVERY = 100;
+    private static final int UPDATE_EVERY = 10;
 
     private final String rootDir;
     private final long maxFS;
@@ -33,7 +33,6 @@ public class FSScanInteractiveVerticle extends VerticleBase {
     private final Set<String> excludedDirs;
     private final AtomicBoolean stopped;
 
-    // Contatore globale aggiornamenti all'Event Bus, che si incrementa fino a "UPDATE_EVERY"
     private final FSReportPartial globalReport;
     private long filesSinceLastUpdate = 0;
 
@@ -57,11 +56,10 @@ public class FSScanInteractiveVerticle extends VerticleBase {
 
         scanDirectory(fs, rootDir)
                 .onSuccess(report -> {
-                    if (stopped.get()) { log("Scan stopped. Partial files: " + report.getTotalFiles()); }
-                    else { log("Scan complete. Total files: " + report.getTotalFiles()); }
-                    // Pubblica il report finale sull'Event Bus prima di completare
-//                    vertx.eventBus().publish(UPDATE_TOPIC, report.toJson());
-                    resultPromise.complete(report);
+                    FSReportPartial finalReport = globalReport;
+                    if (stopped.get()) { log("Scan stopped. Partial files: " + finalReport.getTotalFiles()); }
+                    else { log("Scan complete. Total files: " + finalReport.getTotalFiles()); }
+                    resultPromise.complete(finalReport);
                     this.vertx.undeploy(this.deploymentID());
                 })
                 .onFailure(err -> {
@@ -75,32 +73,28 @@ public class FSScanInteractiveVerticle extends VerticleBase {
 
     private Future<FSReportPartial> scanDirectory(FileSystem fs, String dir) {
         Promise<FSReportPartial> promise = Promise.promise();
-//        FSReportPartial report = new FSReportPartial(nb, maxFS);
-
         // Controlla lo stop flag prima di fare qualsiasi lavoro su questa directory
         if (stopped.get()) {
-            promise.complete();
+            promise.complete(globalReport);
             return promise.future();
         }
 
         fs.readDir(dir).onComplete(readDirRes -> {
             if (readDirRes.failed()) {
                 log("WARNING: skipping inaccessible directory: " + dir);
-                promise.complete();
+                promise.complete(globalReport);
                 return;
             }
 
             List<String> entries = readDirRes.result();
             if (entries.isEmpty()) {
-                promise.complete();
+                promise.complete(globalReport);
                 return;
             }
 
             List<Future<Void>> propsFutures = new ArrayList<>();
-//            List<Future<FSReportPartial>> subDirFutures = new ArrayList<>();
 
             for (String entry : entries) {
-//                if (stopped.get()) break;
                 String name = new File(entry).getName();
                 if (excludedDirs.contains(name)) {
                     log("Skipping excluded: " + entry);
@@ -135,15 +129,6 @@ public class FSScanInteractiveVerticle extends VerticleBase {
                         // allora avrebbe avuto senso per rendere il pulsante di stop più reattivo, ma avendolo fatto prima
                         // di readDir semplicemente il controllo del flag stop viene fatto subito all'inizio di ogni nuova
                         // chiamata ricorsiva.
-//                        Future<FSReportPartial> subFuture = scanDirectory(fs, entry);
-//                        subDirFutures.add(subFuture);
-//                        subFuture.onComplete(subRes -> {
-//                            if (subRes.failed()) {
-//                                propsPromise.fail(subRes.cause());
-//                            } else {
-//                                propsPromise.complete();
-//                            }
-//                        });
                         scanDirectory(fs, entry).onComplete(subRes -> {
                             if (subRes.failed()) {
                                 propsPromise.fail(subRes.cause());
@@ -159,7 +144,7 @@ public class FSScanInteractiveVerticle extends VerticleBase {
                 if (allRes.failed()) {
                     promise.fail(allRes.cause());
                 } else {
-                    promise.complete();
+                    promise.complete(globalReport);
                 }
             });
         });
