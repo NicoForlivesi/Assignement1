@@ -17,7 +17,7 @@ func Peer(id int, channels []chan int)  {
   fmt.Printf("[Peer %d] my number is %d \n", id, v)
 
   for i := 0; i < len(channels); i++ {
-    if i != id {
+    if i != id { // Per ogni peer che non sono io condivido il mio valore
       fmt.Printf("[Peer %d] sending to channel %d \n", id, i)
       channels[i] <- v
     }    
@@ -43,10 +43,14 @@ func Peer(id int, channels []chan int)  {
 func main() {
 	fmt.Println("Booted.")
 
+    // Qui a differenza del caso centralized non ce un coordinatore
 	n_peers := 10
 	channels := make([]chan int, n_peers)
   for i := 0 ; i < n_peers; i++ {
-    channels[i] = make(chan int, n_peers)
+    channels[i] = make(chan int, n_peers) // Se qui creiamo canali base (senza buffer) il programma
+    // va in deadlock, perchè? la send è bloccante, tutti i peer si mettono a fare la send senza nessuno
+    // che faccia la recive. Ogni canale deve quindi avere un buffer per poter riceve gli n-1 valori senza
+    // bloccarsi. Insomma se ci sono problemi di deadlock prima di tutto controllare la buffer size dei canali.
   }
 
 	for i := 0; i < n_peers; i++ {

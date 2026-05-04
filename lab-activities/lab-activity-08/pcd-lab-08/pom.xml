@@ -15,15 +15,22 @@
     <maven.compiler.release>21</maven.compiler.release>
   </properties>
 
-  <dependencies>
-  <dependency>
-    <groupId>io.reactivex.rxjava3</groupId>
-    <artifactId>rxjava</artifactId>
-    <version>3.1.8</version>
-  </dependency>
-  </dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>io.reactivex.rxjava3</groupId>
+            <artifactId>rxjava</artifactId>
+            <version>3.1.8</version>
+        </dependency>
 
-  <build>
+        <dependency>
+            <groupId>org.reactivestreams</groupId>
+            <artifactId>reactive-streams</artifactId>
+            <version>1.0.4</version>
+        </dependency>
+    </dependencies>
+
+
+    <build>
       <plugins>
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
         <plugin>

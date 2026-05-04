@@ -3,7 +3,7 @@
  * Exchanging values problem (module-3.1)  
  *
  * Centralized solution.
- * 
+ * (REGISTRAZIONE 27/04)
  */
  package main
 
@@ -40,7 +40,7 @@ func Coord(n_peers int, coord_ch chan int, channels []chan MinMaxMsg) {
 		}	
 	}
     fmt.Printf("[Coord] Max is %d and min is %d \n", max, min)
-	for i := 0; i < n_peers; i++ {
+	for i := 0; i < n_peers; i++ { // In questo caso è semplice: conosciamo il numero di peers
 		channels[i] <- MinMaxMsg{ min: min, max: max}
 	}
 }
