@@ -23,7 +23,8 @@ public class ActorWithBehaviours extends AbstractActor {
 	private void onMsgZero(MsgZero msg) {
 		log("msgZero - state: " + state);
 		state++;
-		this.getContext().become(receiverBehaviourA());
+		this.getContext().become(receiverBehaviourA()); // con la become specifichiamo quale sarà il reciver da usare da
+        // li in avanti. Quindi andiamo a cambiare il Receiver di default da qui in poi (molto utile)
 	}
 
 
@@ -39,7 +40,7 @@ public class ActorWithBehaviours extends AbstractActor {
 		log("msgOne - state: " + state);	
 		state++;
 
-		this.getContext().become(receiverBehaviourB());
+		this.getContext().become(receiverBehaviourB()); // altro cambio di behavior
 	}
 	
 	/* Behaviour B */

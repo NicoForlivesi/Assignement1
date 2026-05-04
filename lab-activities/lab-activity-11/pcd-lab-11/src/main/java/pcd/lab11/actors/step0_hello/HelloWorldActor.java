@@ -12,7 +12,9 @@ public class HelloWorldActor extends AbstractActor {
 	
 	public Receive createReceive() {
 		return receiveBuilder()
-				.match(SayHello.class, this::onSayHello)
+				.match(SayHello.class, this::onSayHello) // Quando ricevo un messaggio del tipo SayHello -> manda in
+                // esecuzione l'handler "onSayHello", notare che è un metodo privato della classe, in generale l'handler
+                // va fatto così
 	            .build();
 	}
 

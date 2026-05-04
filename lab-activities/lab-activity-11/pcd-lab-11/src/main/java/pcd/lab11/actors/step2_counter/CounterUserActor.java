@@ -23,7 +23,8 @@ public class CounterUserActor extends AbstractActor {
 
 	private void onCounterValueMsg(CounterValueMsg msg){
 		log("value: " + msg.value());
-	}
+	} // Qui si deve prepapre
+    // per ricevere la risposta dopo aver fatto la domanda.
 
 	private void log(String msg) {
 		System.out.println("[CounterUserActor] " + msg);

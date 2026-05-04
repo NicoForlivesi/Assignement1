@@ -9,6 +9,7 @@
       <sourceFolder url="file://$MODULE_DIR$/assignments/assignment-02/src/eventloop-version/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/assignments/assignment-02/src/reactive-version/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/assignments/assignment-02/src/virtualthreads-version/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lab-activities/lab-activity-11/pcd-lab-11/src/main/java" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

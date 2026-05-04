@@ -16,8 +16,9 @@ public class ActorWithBehavioursAndStashing extends AbstractActorWithStash {
 	public Receive createReceive() {
 		return receiveBuilder()
 				.match(MsgProtocol.MsgZero.class,this::onMsgZero)
-				.match(MsgProtocol.MsgOne.class, (msg) -> { this.stash(); })
-				.match(MsgProtocol.MsgTwo.class, (msg) -> { this.stash(); })
+				.match(MsgProtocol.MsgOne.class, (msg) -> { this.stash(); }) // Significa, parcheggia un attimo il messaggio
+                // arrivato (Msg.One) che verrà poi ripreso in un secondo momento.
+				.match(MsgProtocol.MsgTwo.class, (msg) -> { this.stash(); }) // Stessa cosa per MsgTwo
 				.build();
 	}
 
@@ -33,7 +34,7 @@ public class ActorWithBehavioursAndStashing extends AbstractActorWithStash {
 
 	public Receive receiverBehaviourA() {
 		return receiveBuilder()
-				.match(MsgProtocol.MsgOne.class,this::onMsgOne)
+				.match(MsgProtocol.MsgOne.class,this::onMsgOne) // Qui vado a riprendere il MsgOne che avevo parcheggiato
 				.match(MsgProtocol.MsgTwo.class, (msg) -> { this.stash(); })
 				.build();
 	}
@@ -49,7 +50,7 @@ public class ActorWithBehavioursAndStashing extends AbstractActorWithStash {
 	
 	public Receive receiverBehaviourB() {
 		return receiveBuilder()
-				.match(MsgProtocol.MsgTwo.class,this::onMsgTwo)
+				.match(MsgProtocol.MsgTwo.class,this::onMsgTwo) // Prendo il MsgTwo che avevo parcheggiato
 				.build();
 	}
 
