@@ -8,6 +8,8 @@ import io.reactivex.rxjava3.subjects.PublishSubject;
 import java.awt.event.*;
 import java.util.concurrent.TimeUnit;
 
+// Un esempio in cui viene aggianciato un flusso di eventi ad una GUI
+
 public class Test04a_swing_pubsub {	
 
 	static class MyFrame extends JFrame {	
@@ -34,7 +36,7 @@ public class Test04a_swing_pubsub {
 
 	static public void main(String[] args){
 		
-		PublishSubject<Integer> clickStream = PublishSubject.create();
+		PublishSubject<Integer> clickStream = PublishSubject.create(); // per agganciare stream asincroni a GUI è molto comodo
 		
 		SwingUtilities.invokeLater(()->{
 			new MyFrame(clickStream);
@@ -47,9 +49,10 @@ public class Test04a_swing_pubsub {
 				System.out.println(Thread.currentThread().getName() + "click: "+System.currentTimeMillis());
 			});
 
-        // Gestione caso multiclick
+        // Gestione caso multiclick in 250ms
 		clickStream
 			.buffer(clickStream.throttleWithTimeout(250, TimeUnit.MILLISECONDS))
+                // buffer è un operatore che raggruppa gli elementi di un flusso secondo le proprietà che specifchiamo.
 			.map(xs -> xs.size())
 			.filter((v) -> v >= 2)
 			.subscribe((v) -> {

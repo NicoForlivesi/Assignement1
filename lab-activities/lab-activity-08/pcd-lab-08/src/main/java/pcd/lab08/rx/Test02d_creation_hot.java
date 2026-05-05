@@ -3,6 +3,11 @@ package pcd.lab08.rx;
 import io.reactivex.rxjava3.core.*;
 import io.reactivex.rxjava3.flowables.ConnectableFlowable;
 import io.reactivex.rxjava3.observables.ConnectableObservable;
+/*
+* Introduciamo i flussi "hot", tutti quelli visti negli esempi precedenti erano "cold", ovvero la generazione del
+* flusso partiva solo alla chiamata del metodo subscribe.
+* Qui la generazione parte */
+
 
 public class Test02d_creation_hot {
 
@@ -27,8 +32,10 @@ public class Test02d_creation_hot {
 		 });
 
         // Chiamando .publish si crea un flusso "HOT"
+        // è la sequenza di comandi da usare per creare un flusso hot.
 		ConnectableObservable<Integer> hotObservable = source.publish();
-		hotObservable.connect();
+		hotObservable.connect(); // Qui il flusso hot inizia a comporsi, anche se non ci sono ancora subscribe, dopo
+        // verrà chiamata .subscribe ma gli elementi già generati prima andranno persi
 	
 		/* give time for producing some data before any subscription */
 		Thread.sleep(500);
@@ -45,7 +52,8 @@ public class Test02d_creation_hot {
 		
 		log("Subscribing B.");
 		
-		hotObservable.subscribe((s) -> {
+		hotObservable.subscribe((s) -> { // Qui arriva un altro subscriber che si è perso tutti gli elementi iniziali
+            // più quelli che A invece aveva catturato.
 			log("subscriber B: "+s); 
 		});	
 		
@@ -54,7 +62,11 @@ public class Test02d_creation_hot {
 		Thread.sleep(10_000);
 
 	}
-	
+	/*
+	* Notare che il thread che genera gli elementi è lo stesso che esegue le subscribe, quindi se una lambda dentro una
+	* subscribe si inloppa, gli elementi non vengono più generati, c'è ancora questo accoppiamento che rimane un
+	* problema da affrontare...
+	* */
 	static private void log(String msg) {
 		System.out.println("[ " + Thread.currentThread().getName() + "  ] " + msg);
 	}

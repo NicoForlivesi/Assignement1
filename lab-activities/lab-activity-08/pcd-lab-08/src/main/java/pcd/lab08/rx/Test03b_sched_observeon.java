@@ -33,6 +33,11 @@ public class Test03b_sched_observeon {
 			.observeOn(Schedulers.computation()) 				// => use RX comp thread(s) downstream
                 // Chiamato observeOn, tutte le computazioni eseguite in stati successivi vengono eseguite sullo scheduler
                 // specificato come argomento di observeOn
+                /*
+                * Allora, subscribeOn è indipendente dal punto specifico della pipeline in cui viene chiamato, observeOn
+                * invece ne è dipendente, praticamente dice che da dove viene chiamato in poi allora dovrà essere considerato
+                * uno schedulers diverso per la distribuzione del lavoro sui thread.
+                * */
 			.map(v -> { log("map 2 " + v); return v + 1; })		// by the RX comp thread
 			.subscribe(v -> {						// by the RX comp thread
 				log("sub " + v);
