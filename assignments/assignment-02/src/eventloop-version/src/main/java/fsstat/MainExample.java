@@ -18,7 +18,7 @@ public class MainExample {
         int nb = 5;
 
         System.out.println("=== FSStatLib v1 — Event-loop (Vert.x) ===");
-        System.out.printf("Directory : %s%nMaxFS     : %,d bytes%nBands (NB): %d%n%n",
+        System.out.printf("Directory: %s%nMaxFS: %,d bytes%nBands: %d%n%n",
                 targetDir, maxFS, nb);
 
         FSStatLib lib = new FSStatLib();

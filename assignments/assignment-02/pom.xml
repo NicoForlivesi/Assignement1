@@ -3,10 +3,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>pcd</groupId>
-  <artifactId>pcd-lab-07</artifactId>
+  <artifactId>pcd-assignment2</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
-  <name>pcd-lab-07</name>
+  <name>pcd-assignment2</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

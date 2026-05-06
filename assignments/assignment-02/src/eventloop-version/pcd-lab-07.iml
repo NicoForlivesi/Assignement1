@@ -5,6 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../extension/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../reactive-version/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../virtualthreads-version/src/main/java" isTestSource="false" />
     </content>
   </component>
 </module>
