@@ -6,9 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="pcd-lab-07 (1)" />
         <module name="pcd-lab-08" />
         <module name="pcd-lab-07" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="pcd-lab-11" target="21" />
+    </bytecodeTargetLevel>
   </component>
 </project>
