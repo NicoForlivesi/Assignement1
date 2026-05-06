@@ -15,7 +15,11 @@ The assignment is about concurrent programming based on message passing, synchro
 
 ### Exercise #2 - *Heads-or-Tails Championship*
 
-The goal of the exercise is to design and implement in Go language a championship of `N` players playing a `Heads-or-Tails` game. The number of players `N` is equal to 2<sup>`m`</sup>, so that  the championship is organized in `m` rounds: at each round, games run concurrently and the winners goes to the next round, until the final round. For instance: with `m = 3`, we have 8 players, at the first round playing 4 games concurently; the 4 winners go on playing the next round, playing 2 games concurrently (i.e. the semi-finals); finally, the 2 winners play the final game and we have a winner. 
+The goal of the exercise is to design and implement in Go language a championship of `N` players playing a `Heads-or-Tails` game. The number of players `N` is equal to 2<sup>`m`</sup>, so that  the championship is organized in `m` rounds: at each round, games run concurrently and the winners goes to the next round, until the final round. For instance: with `m = 3`, we have 8 players, at the first round playing 4 games concurently; the 4 winners go on playing the next round, playing 2 games concurrently (i.e. the semi-finals); finally, the 2 winners play the final game and we have a winner.
+In generale, aspettiamo la fine di ogni round prima di passare al successivo, quindi se due player finiscono prima dovranno aspettare
+la fine di tutti i match nel round corrente, per il round successivo il matchmaking verrà fatto in maniera casuale.
+Notare che probabilmente sarà necessario introdurre una figura "arbitro".
+
 - To be implemented in Go using an interaction model based on message passing
   - no shared memory is allowed
 
