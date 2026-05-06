@@ -39,7 +39,6 @@ public class FSScanVerticle extends VerticleBase {
 
         scanDirectory(fs, rootDir)
                 .onSuccess(report -> {
-                    log("Scan complete. Total files: " + report.getTotalFiles());
                     resultPromise.complete(report);
                     this.vertx.undeploy(this.deploymentID());
                 })

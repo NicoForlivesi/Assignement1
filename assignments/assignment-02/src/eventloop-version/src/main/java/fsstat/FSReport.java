@@ -44,6 +44,7 @@ public class FSReport {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        sb.append("\n");
         sb.append("=== FSReport ===\n");
         sb.append("Total files : ").append(totalFiles).append("\n");
         for (int i = 0; i < nb; i++) {

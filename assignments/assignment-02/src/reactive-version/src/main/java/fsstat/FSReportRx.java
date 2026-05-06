@@ -14,31 +14,36 @@ public class FSReportRx {
     private final long step;
 
     public FSReportRx(int nb, long maxFS) {
+        this(nb, maxFS, 0, new long[nb], 0);
+    }
+
+    private FSReportRx(int nb, long maxFS, long totalFiles, long[] bands, long overflow) {
         this.nb = nb;
         this.maxFS = maxFS;
+        this.totalFiles = totalFiles;
+        this.bands = bands;
+        this.overflow = overflow;
         this.step = maxFS / nb;
-        this.bands = new long[nb];
     }
 
-    public void addFile(long size) {
-        totalFiles++;
+    /**
+     * Restituisce un nuovo report aggiornato con un file della dimensione data.
+     * Nessuna mutazione: crea una nuova istanza.
+     */
+    public FSReportRx withFile(long size) {
+        long newTotal = totalFiles + 1;
+        long newOverflow = overflow;
+        long[] newBands = bands.clone();
+
         if (size > maxFS) {
-            overflow++;
+            newOverflow++;
         } else {
             int idx = (step == 0) ? 0 : (int) Math.min(size / step, nb - 1);
-            bands[idx]++;
+            newBands[idx]++;
         }
-    }
 
-    public void merge(FSReportRx other) {
-        this.totalFiles += other.totalFiles;
-        this.overflow += other.overflow;
-        for (int i = 0; i < nb; i++) {
-            this.bands[i] += other.bands[i];
-        }
+        return new FSReportRx(nb, maxFS, newTotal, newBands, newOverflow);
     }
-
-    public long getTotalFiles() { return totalFiles; }
 
     @Override
     public String toString() {

@@ -4,7 +4,7 @@ import java.util.Set;
 
 public class MainExampleRx {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         String targetDir = "D:\\Programmi (x86)\\ Steam";
         Set<String> excluded = Set.of("logs");
@@ -20,7 +20,7 @@ public class MainExampleRx {
         long start = System.currentTimeMillis();
 
         lib.getFSReport(targetDir, maxFS, nb, excluded)
-                .subscribe(
+                .blockingSubscribe( // <- Importante blockingSubscribe e non una semplice subscribe
                         report -> {
                             long elapsed = System.currentTimeMillis() - start;
                             System.out.println(report);
@@ -30,7 +30,9 @@ public class MainExampleRx {
                             System.err.println("Error: " + err.getMessage());
                         }
                 );
-
-        System.out.println("[main] getFSReport called, waiting for Rx pipeline...");
+        // Thread.sleep(...); Sarebbe un altra soluzione se non si vuole usare .blockingSubscribe per imporre al main thread
+        // di aspettare i worker prima di terminare, è però meno elegante.
+        // Se non si usa ne blockingSubscribe ne Thread.sleep sul main, il main thread termina prima che venga prodotto
+        // il risultato della scansione.
     }
 }
