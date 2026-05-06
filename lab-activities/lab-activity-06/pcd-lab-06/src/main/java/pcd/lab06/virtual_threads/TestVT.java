@@ -3,6 +3,10 @@ package pcd.lab06.virtual_threads;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * L'idea base per quanto riguarda il discorso applicativo dei VT è che l'API non deve cambiare
+ * rispetto ai thread classici forniti da java
+ */
 class MyMonitor {
 	private Lock lock;
 	
@@ -31,7 +35,7 @@ public class TestVT {
 		
 		for (int i = 0; i <  10; i++) {
 			Thread
-			.ofVirtual()
+			.ofVirtual() // Specifichiamo che vogliamo creare un virtual thread
 			.name("myVirtualThread-"+i)
 			.start(() -> {
 				log("Hello from " + Thread.currentThread());

@@ -4,7 +4,7 @@ import java.util.Set;
 
 public class MainExampleRx {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
 
         String targetDir = "D:\\Programmi (x86)\\ Steam";
         Set<String> excluded = Set.of("logs");

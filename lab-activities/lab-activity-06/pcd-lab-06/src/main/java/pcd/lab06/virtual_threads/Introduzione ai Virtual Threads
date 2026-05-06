@@ -1,0 +1,13 @@
+I virtual threads nascono con l'idea di introdurre nel mondo java dei thread leggeri,
+che non fossero 1:1 col sistema operativo.
+Il loro obiettivo è ovviare alla non presenza di un event-loop fornendo comunque la reattività che si ha
+per esempio in Node.js.
+Mantengono l'idea dei thread, ma non sfruttano quelli del sistema operativo, bensì un pool di thread che
+rimane sotto la JVM che possono essere "montati" e "smontati" all'occorrenza.
+Per ogni thread classico che abbiamo visto, quando uno viene lanciato sia che debba fare operazioni
+microscopiche che molto esaustive, viene lanciato con un determinato stack size, il vantaggio dei virtual
+thread è proprio che lo stack size per ogni thread virtuale è dinamico.
+Sono molto utili in ambiti di input-output (come nel secondo assignement).
+Sono in un certo senso legati ai carrer thread (quelli dell'O.S.), se un virtual thread non si ferma mai
+consumeremo tutti i carrer thread e l'uso dei VT risulta poco utile, per questo sono molto utilizzati in ambiti
+di I/O perchè sono operazioni molto frequenti ma spesso di breve durata.
