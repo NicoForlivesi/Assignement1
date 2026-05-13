@@ -45,7 +45,8 @@ func main() {
 	}
 
 	/* receiving messages */
-	for i := 0; i < len(channels); i++ { // Per ogni canale creato vado a fare una recive.
+	for i := 0; i < len(channels); i++ { // Per ogni canale creato vado a fare una recive. Con una select sarebbe stato
+		// più efficente
 		msg := <-channels[i]
 		fmt.Printf("%s from %s at %s\n", msg.content, msg.senderId, msg.time.String())
 	}
