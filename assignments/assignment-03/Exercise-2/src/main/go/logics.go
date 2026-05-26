@@ -20,7 +20,7 @@ func runTournament(players []chan PlayRequest) {
     for len(current) > 1 { // Quando current contiene un solo elemento quello è l'id del vincitore
 
 		fmt.Printf("\n=========================\n")
-        fmt.Printf("🏁  ROUND %d — %d giocatori\n", round, len(current))
+        fmt.Printf(" ROUND %d — %d giocatori\n", round, len(current))
         fmt.Printf("=========================\n")
 
         rand.Shuffle(len(current), func(i, j int) { // Shuffle dell'array contenente i giocatori ancora in gioco per
@@ -47,7 +47,7 @@ func runTournament(players []chan PlayRequest) {
 		round++
     }
     fmt.Printf("\n===============================\n")
-    fmt.Printf("👑  CAMPIONE ASSOLUTO: Player %d\n", current[0])
+    fmt.Printf("CAMPIONE ASSOLUTO: Player %d\n", current[0])
     fmt.Printf("===============================\n")
 }
 
@@ -86,7 +86,7 @@ func playMatch(p1, p2 int, players []chan PlayRequest, results chan int, logs ch
     	winner = p2
 	}
 
-    log += fmt.Sprintf("🏆  VINCE Player %d!\n", winner)
+    log += fmt.Sprintf("VINCE Player %d!\n", winner)
     logs <- log // Passo al canale tutti i log del determinato match per mantenerne l'ordine 
     results <- winner
 }
