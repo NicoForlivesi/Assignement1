@@ -1,0 +1,38 @@
+
+services:
+
+  controller:
+    build:
+      context: .
+      dockerfile: Dockerfile.sharding
+    environment:
+      ROLE: "controller"
+      CLUSTER_IP: "controller"
+      CLUSTER_PORT: "1600"
+      SEED_NODES: "controller:1600"
+    ports:
+      - "1600:1600"
+
+  sensors:
+    build:
+      context: .
+      dockerfile: Dockerfile.sharding
+    environment:
+      ROLE: "sensor"
+      CLUSTER_IP: "sensors"
+      CLUSTER_PORT: "2552"
+      SEED_NODES: "controller:1600"
+    depends_on:
+      - controller
+
+  keypad:
+    build:
+      context: .
+      dockerfile: Dockerfile.sharding
+    environment:
+      ROLE: "keypad"
+      CLUSTER_IP: "keypad"
+      CLUSTER_PORT: "2553"
+      SEED_NODES: "controller:1600"
+    depends_on:
+      - controller

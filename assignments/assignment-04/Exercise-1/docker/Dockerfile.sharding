@@ -1,0 +1,21 @@
+FROM eclipse-temurin:21-jre
+
+# Directory dell'app
+WORKDIR /app
+
+# Copia il fat-jar generato da sbt assembly
+COPY target/scala-3.*/alarm-system-assembly*.jar app.jar
+
+# Variabili di ambiente per Pekko Cluster
+ENV ROLE=controller
+ENV CLUSTER_IP=localhost
+ENV CLUSTER_PORT=1600
+ENV SEED_NODES=controller:1600
+
+# Espone la porta del cluster (solo il controller la mappa)
+EXPOSE 1600
+EXPOSE 2552
+EXPOSE 2553
+
+# Avvio dell'app
+ENTRYPOINT ["sh", "-c", "java -jar app.jar"]

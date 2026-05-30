@@ -1,0 +1,22 @@
+[0m[[0m[31merror[0m] [0m[0m[31m[31m-- [E007] Type Mismatch Error: C:\Users\nicof\OneDrive\Desktop\Universita\1 Anno Magistrale\PCD\Assignement1\assignments\assignment-04\Exercise-1\src\main\scala\cluster\App.scala:41:5 [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m41 |[0m    )[0m
+[0m[[0m[31merror[0m] [0m[0m[31m[31m   |[0m     ^[0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m   |[0m     Found:    Unit[0m
+[0m[[0m[31merror[0m] [0m[0m[31m   |[0m     Required: org.apache.pekko.actor.typed.ActorSystem[Nothing][0m
+[0m[[0m[31merror[0m] [0m[0m[31m   |[0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m   |[0m longer explanation available when compiling with `-explain`[0m
+[0m[[0m[31merror[0m] [0m[0m[31m[31m-- [E007] Type Mismatch Error: C:\Users\nicof\OneDrive\Desktop\Universita\1 Anno Magistrale\PCD\Assignement1\assignments\assignment-04\Exercise-1\src\main\scala\cluster\App.scala:91:5 [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m91 |[0m    )[0m
+[0m[[0m[31merror[0m] [0m[0m[31m[31m   |[0m     ^[0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m   |[0m     Found:    Unit[0m
+[0m[[0m[31merror[0m] [0m[0m[31m   |[0m     Required: org.apache.pekko.actor.typed.ActorSystem[Nothing][0m
+[0m[[0m[31merror[0m] [0m[0m[31m   |[0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m   |[0m longer explanation available when compiling with `-explain`[0m
+[0m[[0m[31merror[0m] [0m[0m[31m[31m-- [E007] Type Mismatch Error: C:\Users\nicof\OneDrive\Desktop\Universita\1 Anno Magistrale\PCD\Assignement1\assignments\assignment-04\Exercise-1\src\main\scala\cluster\App.scala:113:5 [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m113 |[0m    )[0m
+[0m[[0m[31merror[0m] [0m[0m[31m[31m    |[0m     ^[0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m    |[0m     Found:    Unit[0m
+[0m[[0m[31merror[0m] [0m[0m[31m    |[0m     Required: org.apache.pekko.actor.typed.ActorSystem[Nothing][0m
+[0m[[0m[31merror[0m] [0m[0m[31m    |[0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m    |[0m longer explanation available when compiling with `-explain`[0m
+[0m[[0m[31merror[0m] [0m[0mthree errors found[0m

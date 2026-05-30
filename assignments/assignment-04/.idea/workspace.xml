@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="de65c3bf-591b-4b0a-ace7-8fb82fe86440" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Exercise-1/build.sbt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exercise-1/docker/Dockerfile.sharding" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exercise-1/docker/docker-compose-sharding.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exercise-1/src/main/resources/application-sharding.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exercise-1/src/main/resources/logback.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exercise-1/src/main/scala/cluster/AlarmControllerEntity.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exercise-1/src/main/scala/cluster/CborSerializable.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab-activities/lab-activity-13/pcd-lab-13/src/main/java/pcd/lab13/rmi/example_01/MyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab-activities/lab-activity-13/pcd-lab-13/src/main/java/pcd/lab13/rmi/example_01/MyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab-activities/lab-activity-13/pcd-lab-13/src/main/java/pcd/lab13/rmi/example_01/MyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab-activities/lab-activity-13/pcd-lab-13/src/main/java/pcd/lab13/rmi/example_01/MyServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab-activities/lab-activity-13/pcd-lab-13/src/main/java/pcd/lab13/rmi/example_01/RunClientSide.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab-activities/lab-activity-13/pcd-lab-13/src/main/java/pcd/lab13/rmi/example_01/RunClientSide.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab-activities/lab-activity-13/pcd-lab-13/src/main/java/pcd/lab13/rmi/example_01/RunServerSide.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab-activities/lab-activity-13/pcd-lab-13/src/main/java/pcd/lab13/rmi/example_01/RunServerSide.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="SBT">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="assignment-04" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="3EMIGTXJwwCJ7ibgmeOMhh28cXz" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/nicof/OneDrive/Desktop/Universita/1 Anno Magistrale/PCD/Assignement1/assignments/assignment-04/Exercise-1/src/main/resources&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\nicof\OneDrive\Desktop\Universita\1 Anno Magistrale\PCD\Assignement1\assignments\assignment-04\Exercise-1\src\main\resources" />
+      <recent name="C:\Users\nicof\OneDrive\Desktop\Universita\1 Anno Magistrale\PCD\Assignement1\assignments\assignment-04\Exercise-1\docker" />
+      <recent name="C:\Users\nicof\OneDrive\Desktop\Universita\1 Anno Magistrale\PCD\Assignement1\assignments\assignment-04\Exercise-1\src\main\scala\cluster" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\nicof\OneDrive\Desktop\Universita\1 Anno Magistrale\PCD\Assignement1\assignments\assignment-04\Exercise-1\src\main\scala\cluster" />
+      <recent name="C:\Users\nicof\OneDrive\Desktop\Universita\1 Anno Magistrale\PCD\Assignement1\assignments\assignment-04\Exercise-1" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="assignment-04_9990" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="ScalaProjectSettings">
+    <option name="migrateConfigurationsNotificationShown" value="true" />
+    <option name="scala3DisclaimerShown" value="true" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="de65c3bf-591b-4b0a-ace7-8fb82fe86440" name="Changes" comment="" />
+      <created>1779981918146</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1779981918146</updated>
+    </task>
+    <servers />
+  </component>
+</project>
