@@ -5,14 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de65c3bf-591b-4b0a-ace7-8fb82fe86440" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Exercise-1/build.sbt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Exercise-1/docker/Dockerfile.sharding" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Exercise-1/docker/docker-compose-sharding.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Exercise-1/src/main/resources/application-sharding.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Exercise-1/src/main/resources/logback.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Exercise-1/src/main/scala/cluster/AlarmControllerEntity.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Exercise-1/src/main/scala/cluster/CborSerializable.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exercise-2/src/main/java/controller/GameServerImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exercise-2/src/main/java/controller/GameSessionImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exercise-2/src/main/java/controller/PlayerCallbackImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exercise-2/src/main/java/controller/ServerMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exercise-2/src/main/java/model/Board.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exercise-2/src/main/java/model/GameServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exercise-2/src/main/java/model/GameSession.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exercise-2/src/main/java/model/GameState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exercise-2/src/main/java/model/Message.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exercise-2/src/main/java/model/Move.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exercise-2/src/main/java/model/PlayerCallback.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exercise-2/src/main/java/view/ClientMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exercise-2/src/main/java/view/ConsoleUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab-activities/lab-activity-13/.idea/lab-activity-13.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_scala_lang_scala_library_2_12_20_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/assignment-04/assignment-04.assignment-04-build.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/assignment-04/assignment-04.assignment-04-build.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/assignment-04/assignment-04.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/assignment-04/assignment-04.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/assignment-04/assignment-04.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/assignment-04/assignment-04.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/assignment-04/assignment-04.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/assignment-04/assignment-04.test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exercise-2/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Exercise-2/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../lab-activities/lab-activity-13/pcd-lab-13/src/main/java/pcd/lab13/rmi/example_01/MyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab-activities/lab-activity-13/pcd-lab-13/src/main/java/pcd/lab13/rmi/example_01/MyService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../lab-activities/lab-activity-13/pcd-lab-13/src/main/java/pcd/lab13/rmi/example_01/MyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab-activities/lab-activity-13/pcd-lab-13/src/main/java/pcd/lab13/rmi/example_01/MyServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../lab-activities/lab-activity-13/pcd-lab-13/src/main/java/pcd/lab13/rmi/example_01/RunClientSide.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab-activities/lab-activity-13/pcd-lab-13/src/main/java/pcd/lab13/rmi/example_01/RunClientSide.java" afterDir="false" />
@@ -45,6 +63,15 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
@@ -59,28 +86,82 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/nicof/OneDrive/Desktop/Universita/1 Anno Magistrale/PCD/Assignement1/assignments/assignment-04/Exercise-1/src/main/resources&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.ClientMain.executor": "Run",
+    "Application.RunClient.executor": "Run",
+    "Application.RunHost.executor": "Run",
+    "Application.RunJoiner.executor": "Run",
+    "Application.RunServer (1).executor": "Run",
+    "Application.RunServer.executor": "Run",
+    "Application.ServerMain.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/nicof/OneDrive/Desktop/Universita/1 Anno Magistrale/PCD/Assignement1/assignments/assignment-04/Exercise-2(simple)/src/main/java"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\nicof\OneDrive\Desktop\Universita\1 Anno Magistrale\PCD\Assignement1\assignments\assignment-04\Exercise-1\src\main\resources" />
-      <recent name="C:\Users\nicof\OneDrive\Desktop\Universita\1 Anno Magistrale\PCD\Assignement1\assignments\assignment-04\Exercise-1\docker" />
-      <recent name="C:\Users\nicof\OneDrive\Desktop\Universita\1 Anno Magistrale\PCD\Assignement1\assignments\assignment-04\Exercise-1\src\main\scala\cluster" />
+      <recent name="C:\Users\nicof\OneDrive\Desktop\Universita\1 Anno Magistrale\PCD\Assignement1\assignments\assignment-04\Exercise-2(simple)\src\main\java" />
+      <recent name="C:\Users\nicof\OneDrive\Desktop\Universita\1 Anno Magistrale\PCD\Assignement1\assignments\assignment-04\Exercise-2(simple)" />
+      <recent name="C:\Users\nicof\OneDrive\Desktop\Universita\1 Anno Magistrale\PCD\Assignement1\assignments\assignment-04\Exercise-2(2)\src\main\java" />
+      <recent name="C:\Users\nicof\OneDrive\Desktop\Universita\1 Anno Magistrale\PCD\Assignement1\assignments\assignment-04\Exercise-2(2)" />
+      <recent name="C:\Users\nicof\OneDrive\Desktop\Universita\1 Anno Magistrale\PCD\Assignement1\assignments\assignment-04\Exercise-2" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\nicof\OneDrive\Desktop\Universita\1 Anno Magistrale\PCD\Assignement1\assignments\assignment-04" />
       <recent name="C:\Users\nicof\OneDrive\Desktop\Universita\1 Anno Magistrale\PCD\Assignement1\assignments\assignment-04\Exercise-1\src\main\scala\cluster" />
       <recent name="C:\Users\nicof\OneDrive\Desktop\Universita\1 Anno Magistrale\PCD\Assignement1\assignments\assignment-04\Exercise-1" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="model" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.RunServer">
+    <configuration name="RunHost" type="Application" factoryName="Application" singleton="false" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="client.RunHost" />
+      <module name="tic-tac-toe (1)" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RunJoiner" type="Application" factoryName="Application" singleton="false" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="client.RunJoiner" />
+      <module name="tic-tac-toe (1)" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RunServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="server.RunServer" />
+      <module name="tic-tac-toe (1)" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -91,6 +172,16 @@
       <option name="filePath" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Application.RunHost" />
+      <item itemvalue="Application.RunJoiner" />
+      <item itemvalue="Application.RunServer" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.RunServer" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ScalaProjectSettings">
     <option name="migrateConfigurationsNotificationShown" value="true" />

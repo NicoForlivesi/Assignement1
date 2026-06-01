@@ -3,10 +3,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>pcd</groupId>
-  <artifactId>pcd-lab-13</artifactId>
+  <artifactId>tic-tac-toe</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
-  <name>pcd-lab-13</name>
+  <name>tic-tac-toe</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
