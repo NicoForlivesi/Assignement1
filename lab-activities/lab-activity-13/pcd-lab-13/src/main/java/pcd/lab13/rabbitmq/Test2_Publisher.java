@@ -13,15 +13,27 @@ public class Test2_Publisher {
     factory.setHost("localhost");
 	try (Connection connection = factory.newConnection();
 		Channel channel = connection.createChannel()) {
+
+        /*
+         * Dichiara un exchange di tipo "fanout".
+         * Un fanout exchange:
+         *   → ignora la routing key
+         *   → invia ogni messaggio a TUTTE le code collegate (bindate)
+         */
 		channel.exchangeDeclare(EXCHANGE_NAME, "fanout");
 
 		String message = getMessage(argv);
 
+        /*
+         * Pubblica un messaggio sull'exchange "logs".
+         * La routing key è vuota perché nei fanout non serve.
+         */
 		channel.basicPublish(EXCHANGE_NAME, NO_QUEUE_NAME, null, message.getBytes("UTF-8"));
 		System.out.println(" [x] Sent '" + message + "'");
 	}
   }
 
+    // Se non ci sono argomenti, manda un messaggio di default
   private static String getMessage(String[] strings){
     if (strings.length < 1)
     	    return "info: Hello World!";

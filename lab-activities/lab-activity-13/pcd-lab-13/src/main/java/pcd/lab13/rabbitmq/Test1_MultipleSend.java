@@ -14,10 +14,12 @@ public class Test1_MultipleSend {
 		factory.setHost("localhost");
 		try (Connection connection = factory.newConnection();
 			Channel channel = connection.createChannel()) {
-			channel.queueDeclare(QUEUE_NAME, false, false, false, null);
-			channel.queueDeclare(QUEUE_NAME, false, false, false, null);
 
-			for (int i = 0; i < 6; i++) {
+			// Dichiara la coda (due volte, ma è idempotente: non crea duplicati, la seconda semplicemente non fa nulla)
+			channel.queueDeclare(QUEUE_NAME, true, false, false, null);
+			channel.queueDeclare(QUEUE_NAME, true, false, false, null);
+
+			for (int i = 0; i < 6; i++) { // Inviamo 6 messaggi su quella coda
 				String message = "Hello World! " + i;
 				channel.basicPublish(NO_EXCHANGE_USED, QUEUE_NAME, null, message.getBytes("UTF-8"));
 				System.out.println(" [x] Sent '" + message + "'");

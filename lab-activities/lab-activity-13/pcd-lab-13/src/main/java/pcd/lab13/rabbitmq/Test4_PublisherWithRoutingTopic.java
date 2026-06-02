@@ -12,11 +12,30 @@ public class Test4_PublisherWithRoutingTopic {
     factory.setHost("localhost");
 	try (Connection connection = factory.newConnection();
 		Channel channel = connection.createChannel()) {
+
+        /*
+         * Dichiara un exchange di tipo "topic".
+         *
+         * Un topic exchange permette routing basato su pattern.
+         * Le routing key sono stringhe con parole separate da punti, es:
+         *   "kern.critical"
+         *   "auth.info"
+         *   "sensor.temperature.kitchen"
+         *
+         * I subscriber possono usare wildcard:
+         *   *  → una sola parola
+         *   #  → zero o più parole
+         */
 		channel.exchangeDeclare(EXCHANGE_NAME, "topic");
 
 		String routingKey = getRouting(argv);
 		String message = getMessage(argv);
 
+        /*
+         * Pubblica il messaggio sull'exchange "topic_logs".
+         * La routing key determina quali code lo riceveranno,
+         * in base ai pattern dei binding.
+         */
 		channel.basicPublish(EXCHANGE_NAME, routingKey, null, message.getBytes("UTF-8"));
 		System.out.println(" [x] Sent '" + routingKey + "':'" + message + "'");
 	}

@@ -11,9 +11,27 @@ public class Test3_SubscriberWithRoutingDirect {
     Connection connection = factory.newConnection();
     Channel channel = connection.createChannel();
 
+    /*
+     * Dichiara lo stesso exchange "direct".
+     * Deve essere identico a quello del publisher.
+     */
     channel.exchangeDeclare(EXCHANGE_NAME, "direct");
+
+    /*
+     * Crea una coda anonima temporanea.
+     * Perfetta per un subscriber che vive solo finché il programma è attivo.
+     */
     String queueName = channel.queueDeclare().getQueue();
 
+    /*
+     * BINDING DELLA CODA ALL'EXCHANGE
+     *
+     * Qui il subscriber dice:
+     *   "Voglio ricevere messaggi con routing key = 'tag-1'"
+     *   "Voglio ricevere messaggi con routing key = 'tag-2'"
+     *
+     * Quindi questa coda riceverà SOLO quei messaggi.
+     */
     channel.queueBind(queueName, EXCHANGE_NAME, "tag-1");
     channel.queueBind(queueName, EXCHANGE_NAME, "tag-2");
 
@@ -22,7 +40,16 @@ public class Test3_SubscriberWithRoutingDirect {
     DeliverCallback deliverCallback = (consumerTag, delivery) -> {
         String message = new String(delivery.getBody(), "UTF-8");
         System.out.println(" [x] Received '" + delivery.getEnvelope().getRoutingKey() + "':'" + message + "'");
+      /*
+       * delivery.getEnvelope().getRoutingKey()
+       * → mostra quale routing key ha causato la consegna del messaggio.
+       */
     };
+
+    /*
+     * Consuma i messaggi dalla coda anonima.
+     * autoAck = true → ack automatici.
+     */
     channel.basicConsume(queueName, true, deliverCallback, t -> {});
   }
 }

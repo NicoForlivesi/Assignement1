@@ -14,11 +14,23 @@ public class Test3_PublisherWithRoutingDirect {
     try (Connection connection = factory.newConnection();
     	Channel channel = connection.createChannel()){
 
+        /*
+         * Dichiara un exchange di tipo "direct".
+         *
+         * Un direct exchange recapita il messaggio SOLO alle code
+         * che hanno un binding con una routing key esattamente uguale
+         * a quella usata dal publisher.
+         */
     	channel.exchangeDeclare(EXCHANGE_NAME, "direct");
 
+        // Routing key scelta manualmente (potrebbe venire dagli argomenti)
     	String routingKey = "tag-1"; // getSeverity(argv);
     	String message = "hello2"; // getMessage(argv);
 
+        /*
+         * Pubblica il messaggio sull'exchange "direct_logs".
+         * La routing key è fondamentale: determina quali code lo riceveranno.
+         */
     	channel.basicPublish(EXCHANGE_NAME, routingKey, null, message.getBytes("UTF-8"));
     	System.out.println(" [x] Sent '" + routingKey + "':'" + message + "'");
 

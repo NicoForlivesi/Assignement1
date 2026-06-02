@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a5fd2e7c-6c21-4d27-8a2d-091dc669a796" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../assignments/assignment-02/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test0_Recv.java" beforeDir="false" afterPath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test0_Recv.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test0_Send.java" beforeDir="false" afterPath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test0_Send.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test1_MultipleSend.java" beforeDir="false" afterPath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test1_MultipleSend.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test1_Receive.java" beforeDir="false" afterPath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test1_Receive.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test2_Publisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test2_Publisher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test2_Subscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test2_Subscriber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test3_PublisherWithRoutingDirect.java" beforeDir="false" afterPath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test3_PublisherWithRoutingDirect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test3_SubscriberWithRoutingDirect.java" beforeDir="false" afterPath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test3_SubscriberWithRoutingDirect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test4_PublisherWithRoutingTopic.java" beforeDir="false" afterPath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test4_PublisherWithRoutingTopic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test4_SubscriberWithRoutingTopic.java" beforeDir="false" afterPath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test4_SubscriberWithRoutingTopic.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="3EaJ9Tw29E2euRs9MdjJGEhboWE" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/nicof/Desktop/I am an Engineer/Magistrale/PCD/Assignement1/lab-activities/lab-activity-13&quot;
+  }
+}</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.30387.90" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a5fd2e7c-6c21-4d27-8a2d-091dc669a796" name="Changes" comment="" />
+      <created>1780410595961</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1780410595961</updated>
+    </task>
+    <servers />
+  </component>
+</project>
