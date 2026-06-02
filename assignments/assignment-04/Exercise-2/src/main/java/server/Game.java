@@ -7,10 +7,7 @@ import java.rmi.RemoteException;
 
 class Game {
 
-    private static final String X = "X";
-    private static final String O = "O";
-
-    private final String name;
+    private final String gameName;
     private final String hostName;
 
     private final GameListener hostListener;
@@ -19,17 +16,18 @@ class Game {
     private final Board board = new Board();
     private boolean waiting = true;
 
-    Game(String name, String hostName, GameListener hostListener) {
-        this.name = name;
+    Game(String gameName, String hostName, GameListener hostListener) {
+        this.gameName = gameName;
         this.hostName = hostName;
         this.hostListener = hostListener;
     }
 
-    String getName() { return name; }
+    String getGameName() { return gameName; }
 
     synchronized boolean isWaiting() { return waiting; }
 
-    /** Joiner connects: notify host the game started, then kick off first turn (host plays X). */
+    /** Quando entra un joiner in partita, la partita può iniziare e il suo inizio è gestito proprio dal joiner, è
+     * lui che comunica all'host di essere entrato e da inizio al primo turno passando il controllo all'host */
     void join(String joinerName, GameListener joinerListener) throws RemoteException {
         synchronized (this) {
             this.joinerListener = joinerListener;
@@ -37,10 +35,11 @@ class Game {
         }
         hostListener.receiveMessage(joinerName + " joined the game!");
         joinerListener.receiveMessage("Game started! You are 'O'. Waiting for '" + hostName + "' (X) to move...");
-        hostListener.passTurn(board); // blocking: host reads input and calls makeMove()
+        hostListener.passTurn(board);
     }
 
-    /** Applies a move, notifies the opponent, and passes the turn. */
+    /** Metodo per compiere una mossa, notificare l'avversario sulla mossa appena fatta e passargli il turno (ci sono
+     * anche tutti i controlli per controllare se la partita è terminata) */
     void applyMove(String playerName, int r, int c) throws RemoteException {
         boolean isHost = playerName.equals(hostName);
         String symbol = isHost ? "X" : "O";
@@ -58,9 +57,11 @@ class Game {
         opponent.receiveMessage(board.toString()); // Mostro all'avversario la mossa fatta sulla griglia
 
         if (board.checkWinner(symbol)) {
+            System.out.println("[Server] Partita '" + gameName + "' conclusa. Vincitore: " + playerName);
             opponent.receiveMessage("Game over: you lost!");
             current.receiveMessage("Game over: you won!");
         } else if (board.isFull()) {
+            System.out.println("[Server] Partita '" + gameName + "' conclusa in pareggio.");
             opponent.receiveMessage("Game over: draw!");
             current.receiveMessage("Game over: draw!");
         } else {

@@ -6,11 +6,6 @@ import server.GameService;
 import java.rmi.RemoteException;
 import java.util.Scanner;
 
-/**
- * Client-side callback. Mirrors the ControllerImpl pattern from the course examples:
- * myTurn() reads input and calls makeMove() — the server's calling thread stays
- * blocked here until the move is made, passing the turn implicitly via the call stack.
- */
 public class GameListenerImpl implements GameListener {
 
     private final GameService service;

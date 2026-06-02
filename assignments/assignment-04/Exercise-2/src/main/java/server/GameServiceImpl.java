@@ -42,7 +42,7 @@ public class GameServiceImpl implements GameService {
     public synchronized String[] listOpenGames() throws RemoteException {
         return games.values().stream()
                 .filter(Game::isWaiting)
-                .map(Game::getName)
+                .map(Game::getGameName)
                 .toArray(String[]::new);
     }
 }

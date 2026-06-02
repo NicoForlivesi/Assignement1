@@ -9,6 +9,5 @@ public interface GameListener extends Remote {
 
     void passTurn(Board board) throws RemoteException;
 
-    /** Called to deliver a message to this player (opponent moved, game over, etc.). */
     void receiveMessage(String message) throws RemoteException;
 }
