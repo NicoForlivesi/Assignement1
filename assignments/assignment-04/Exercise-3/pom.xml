@@ -3,10 +3,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>pcd</groupId>
-  <artifactId>tic-tac-toe</artifactId>
+  <artifactId>MOM</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
-  <name>tic-tac-toe</name>
+  <name>MOM</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -14,6 +14,14 @@
     <maven.compiler.target>21</maven.compiler.target>
     <maven.compiler.release>21</maven.compiler.release>
   </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.rabbitmq</groupId>
+      <artifactId>amqp-client</artifactId>
+      <version>5.25.0</version>
+    </dependency>
+  </dependencies>
 
   <build>
       <plugins>

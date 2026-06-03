@@ -6,10 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="tic-tac-toe (1)" />
         <module name="tic-tac-toe" />
-        <module name="pcd-lab-13" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="pcd-lab-13" target="21" />
+      <module name="tic-tac-toe (1)" target="21" />
+    </bytecodeTargetLevel>
   </component>
 </project>

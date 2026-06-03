@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ScalaCompilerConfiguration">
-    <option name="separateProdTestSources" value="true" />
-    <profile name="sbt 1" modules="assignment-04,assignment-04.main,assignment-04.test,assignment-04_9990,assignment-04_9990.main,assignment-04_9990.test,assignment-4,assignment-4.main,assignment-4.test" />
-  </component>
-</project>
