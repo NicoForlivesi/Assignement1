@@ -11,6 +11,12 @@ public class ConcurrentSort {
 	
 		
 		int nSortingWorkers = 20; // best number in theory: Runtime.getRuntime().availableProcessors() + 1
+        // Perchè il + 1? Perchè sotto il SO potrebbe fare un implicito compito I/O per spostare dati dallo storage
+        // alle ram, quindi teniamo un thread pronto che all'evenienza si occupi di subentrare sul core scaricato, sennò
+        // capiterebbe che ogni tanto un thread si blocca per questo motivo lasciando un core della macchina non a pieno
+        // carico per qualche istante di tempo.
+        // Nell'assignment 1 ha senso anche nella parte di misurazione delle performance provare anche un numero diverso
+        // di thread per evidenziare le differenze rispetto al caso migliore.
 		
 		log("Num elements to sort: " + VECTOR_SIZE);
 		log("Num sorting workers: " + nSortingWorkers);

@@ -8,7 +8,7 @@ public class TestIllegalMonitorStateEx {
         
 		try {
 			// synchronized (lock){
-		        lock.wait();
+		        lock.wait(); // Non si può fare, genera un errore
 			// }
 		} catch (Exception ex){
 			ex.printStackTrace();

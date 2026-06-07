@@ -15,7 +15,9 @@ public class WorkerOK extends Thread {
 	public void run(){
 		log("started");
 		for (long i = 0; i < ntimes; i++){
-			synchronized (counter) {
+			synchronized (counter) { // Così è thread safe, ma prendere il lock è un operazione costosa!!
+                // La safety però è una proprietà che non si può barattare ovviamente per performance.
+                // GUARDA UNSAFE COUNTER
 				counter.inc();
 			}
 		}

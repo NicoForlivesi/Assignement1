@@ -12,14 +12,20 @@ public class MergingWorker extends AbstractWorker {
 		this.array = array;
 		this.workers = workers;
 	}
-	
+
+    /**
+     * I metodi di una classe che estende Thread, quindi di un componente attivo, devono essere privati e chiamabili
+     * solo dal flusso di controllo principale, ovvero chiamati solo da dentro il metodo run dove è descritto il comportamento
+     * attivo del componente, nessuno da fuori deve poter chiamare metodi del componente attivo, sul componente attivo deve
+     * essere possibile fare solo chiamate di alto livello ( es .start)
+     * */
 	public void run() {
 		int nParts = workers.size();
 		log("started - merging " + nParts +" parts");
 		log("waiting for subparts to be sorted...");
 		try {
 			for (var w1: workers) {
-				w1.join();
+				w1.join(); // Aspetto che finiscano tutti e poi mergio i risultati
 			}
 			log("subparts sorted, going to merge...");
 			

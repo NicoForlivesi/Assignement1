@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de65c3bf-591b-4b0a-ace7-8fb82fe86440" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../lab-activities/lab-activity-13/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab-activities/lab-activity-13/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../lab-activities/lab-activity-13/pcd-lab-13/src/main/java/pcd/lab13/rmi/example_01/MyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab-activities/lab-activity-13/pcd-lab-13/src/main/java/pcd/lab13/rmi/example_01/MyService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../lab-activities/lab-activity-13/pcd-lab-13/src/main/java/pcd/lab13/rmi/example_01/MyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab-activities/lab-activity-13/pcd-lab-13/src/main/java/pcd/lab13/rmi/example_01/MyServiceImpl.java" afterDir="false" />
@@ -61,33 +62,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.ClientMain.executor&quot;: &quot;Run&quot;,
-    &quot;Application.RunClient.executor&quot;: &quot;Run&quot;,
-    &quot;Application.RunHost.executor&quot;: &quot;Run&quot;,
-    &quot;Application.RunJoiner.executor&quot;: &quot;Run&quot;,
-    &quot;Application.RunServer (1).executor&quot;: &quot;Run&quot;,
-    &quot;Application.RunServer.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ServerMain.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SystemInit.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Worker.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/nicof/OneDrive/Desktop/Universita/1 Anno Magistrale/PCD/Assignement1/assignments/assignment-04&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.ClientMain.executor": "Run",
+    "Application.RunClient.executor": "Run",
+    "Application.RunHost.executor": "Run",
+    "Application.RunJoiner.executor": "Run",
+    "Application.RunServer (1).executor": "Run",
+    "Application.RunServer.executor": "Run",
+    "Application.ServerMain.executor": "Run",
+    "Application.SystemInit.executor": "Run",
+    "Application.Worker.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/nicof/OneDrive/Desktop/Universita/1 Anno Magistrale/PCD/Assignement1/assignments/assignment-04/doc"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\nicof\OneDrive\Desktop\Universita\1 Anno Magistrale\PCD\Assignement1\assignments\assignment-04\doc" />
       <recent name="C:\Users\nicof\OneDrive\Desktop\Universita\1 Anno Magistrale\PCD\Assignement1\assignments\assignment-04\Exercise-3" />
       <recent name="C:\Users\nicof\OneDrive\Desktop\Universita\1 Anno Magistrale\PCD\Assignement1\assignments\assignment-04\Exercise-2(simple)\src\main\java" />
       <recent name="C:\Users\nicof\OneDrive\Desktop\Universita\1 Anno Magistrale\PCD\Assignement1\assignments\assignment-04\Exercise-2(simple)" />
       <recent name="C:\Users\nicof\OneDrive\Desktop\Universita\1 Anno Magistrale\PCD\Assignement1\assignments\assignment-04\Exercise-2(2)\src\main\java" />
-      <recent name="C:\Users\nicof\OneDrive\Desktop\Universita\1 Anno Magistrale\PCD\Assignement1\assignments\assignment-04\Exercise-2(2)" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\nicof\OneDrive\Desktop\Universita\1 Anno Magistrale\PCD\Assignement1\assignments\assignment-04" />

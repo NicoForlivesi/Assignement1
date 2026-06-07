@@ -41,8 +41,10 @@ public class MatMulConcurLib {
 					*/
 				}
 			}
-			exec.shutdown();
-			exec.awaitTermination(Long.MAX_VALUE,TimeUnit.SECONDS);
+			exec.shutdown();// Chiudo l'executor il che significa che non verranno messi dentro altri task.
+			exec.awaitTermination(Long.MAX_VALUE,TimeUnit.SECONDS); // Chiuso l'executor dico: Aspetta la terminazione
+            // dei task che hai sotto.
+            // è un metodo per aspettare la terminazione dei task che si usa solo in situazioni molto semplici.
 			return matC;
 		} catch (Exception ex){
 			throw new MatMulException();

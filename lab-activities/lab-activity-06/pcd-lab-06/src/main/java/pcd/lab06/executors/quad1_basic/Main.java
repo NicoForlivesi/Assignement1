@@ -11,6 +11,7 @@ public class Main {
 		
 		var service = new QuadratureService(nTasks, poolSize);
 		double result = service.compute((double x) -> { return Math.sin(x); }, a, b);
+        // calcoliamo l'integrale definito del seno di x, operazione estremamente parallelizzabile
 		System.out.println("Result: "+result);
 		
 		System.exit(0);

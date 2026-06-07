@@ -15,12 +15,17 @@ public class MyWorkerA extends Worker {
 		while (true){
 		  a1();	
 		  try {
-			  lock.lockInterruptibly();
+			  lock.lockInterruptibly(); // Questo metodo sull'oggetto cerca di prendere il lock ma può anche essere
+              // sbloccato lanciando un eccezione, esiste anche lock.lock, quello non può essere sbloccato.
+              // Esiste anche un altro metodo che se il lock non è disponibile restituisce "false" e va avanti.
+              // Importante ricordarsi qualsiasi metodo usato che qualsiasi cosa succeda finita la sezione critica
+              // il lock va rilasciato.
 			  a2();	
 			  a3();	
 		  } catch (InterruptedException ex) {
 		  } finally {
-			  lock.unlock();
+			  lock.unlock(); // Rilascia il lock uscito dalla sezione critica (sotto questi due costrutti usati
+              // utilizzeranno synchronized).
 		  }
 		}
 	}

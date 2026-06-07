@@ -6,8 +6,10 @@ import java.util.concurrent.locks.*;
 /**
  * 
  * Simple implementation of a bounded buffer
- * as a monitor, using library support
- * 
+ * as a monitor, using library support, qui possiamo fare una signal specifica sulla condition variable che ci
+ * interessa.
+ * Sulle condition variable ce una coda FIFO, se invece usiamo i monitor con l'approccio raw (quindi senza libreria),
+ * non possiamo fare nessuna assunzione sull'ordine di esecuzione dei thread.
  * @param <Item>
  */
 public class BoundedBufferImplWithLib<Item> implements BoundedBuffer<Item> {
@@ -21,7 +23,7 @@ public class BoundedBufferImplWithLib<Item> implements BoundedBuffer<Item> {
 		buffer = new LinkedList<Item>();
 		maxSize = size;
 		mutex = new ReentrantLock();
-		notEmpty = mutex.newCondition();
+		notEmpty = mutex.newCondition(); // Due conditon variable
 		notFull = mutex.newCondition();
 	}
 

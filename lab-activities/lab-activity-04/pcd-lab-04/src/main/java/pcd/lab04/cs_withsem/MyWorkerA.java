@@ -15,7 +15,9 @@ public class MyWorkerA extends Worker {
 		while (true){
 		  action1();	
 		  try {
-			  mutex.acquire();
+			  mutex.acquire(); // col metodo acquire è possibile permettere ad un altro thread di sbloccare
+              // un thread fermo sull'acquire lanciando un eccezione su quell'oggetto, cosa non possibile
+              // per esempio con synchronized.
 			  action2();	
 			  action3();	
 		  } catch (InterruptedException ex) {

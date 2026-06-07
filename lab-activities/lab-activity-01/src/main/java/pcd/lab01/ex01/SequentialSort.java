@@ -16,7 +16,11 @@ public class SequentialSort {
 		log("Sorting.");
 	
 		long t0 = System.nanoTime();		
-		Arrays.sort(v, 0, v.length);
+		Arrays.sort(v, 0, v.length); // Questo è un metodo che sfrutta un unico core, per quanto riguarda lavori CPU bound
+        // quindi dove ci sono da fare molti calcoli per ottenere le massime performance ha senso sfruttare tutti i core
+        // della macchina a disposizione quindi in generale N_Thread = N_core + 1 (vedremo poi perchè + 1).
+        // Ragionamento diverso se si sta svolgendo un compito forntemente I/O bound, in quel caso in numero di thread dovrà
+        // essere idealmente maggiore del numero di core visto che le operazione di I/O sono bloccanti.
 		long t1 = System.nanoTime();
 		log("Done. Time elapsed: " + ((t1 - t0) / 1000000) + " ms");
 		

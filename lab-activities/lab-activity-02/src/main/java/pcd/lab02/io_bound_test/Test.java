@@ -10,7 +10,15 @@ public class Test {
 		int nWorkers = 1; // Runtime.getRuntime().availableProcessors();
 		
 		long totalAmountOfCPUJob = 400_000_000;
-		long totalAmountOfIOJob = 20000; 
+		long totalAmountOfIOJob = 20000;
+        // In un problema I/O bound, qual'è il numero ottimale di thread??
+        // è dato dalla formula Ncpu * Ucpu * (1 + W/C)
+        // Ucpu = target CPU utilization (0 <= Ucpu <= 1)
+        // W / C = ratio of wait and compute time.
+
+        // In questo caso visto che ci sono sia lavori CPU bound che I/O la cosa migliore è fare dei test,
+        // sicuramente il numero ottimale di thread anche se c'è un minimo di I/O comunque è maggior del numero di
+        // core + 1 (quindi del caso solamente CPU bound).
 		
 		int seed = 100;
 		

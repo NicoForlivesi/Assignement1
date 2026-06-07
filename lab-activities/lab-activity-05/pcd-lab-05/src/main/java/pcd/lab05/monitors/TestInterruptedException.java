@@ -20,7 +20,10 @@ public class TestInterruptedException {
 
 		Thread.sleep(1000);
 
-		th.interrupt();
+		th.interrupt(); // sblocca solo thread che sono in esplicita .wait, se per esempio un thread fosse bloccanto
+        // in un while(true) dentro un blocco syncrhonized, lanciando interrupt non cambia la situazione.
+        // Thread fermi su una wait sono sblocabili manualmente, thread bloccanti in un blocco synchronized non lascieranno
+        // mai il lock sull'oggetto con un imposizione dall'esterno.
 		
 	}
 

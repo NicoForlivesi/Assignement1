@@ -12,7 +12,10 @@ public class TestHowManyThreads {
 					System.out.println("Hello from " + Thread.currentThread().getName());
 					counter.addAndGet(1);
 					try {
-						Thread.sleep(5000);
+						Thread.sleep(5000); // Se non mettessimo la sleep creerebbe un numero infinito, perchè in realtà
+                        // viene creato un thread e termina e torna subito a disposizione è un po come se venissero ciclati.
+                        // Con questo esempio vediamo quanti thread operativi (effettivamente attivi)
+                        // riusciamo a creare al massimo.
 					} catch (Exception ex) {}
 				}).start();
 			}

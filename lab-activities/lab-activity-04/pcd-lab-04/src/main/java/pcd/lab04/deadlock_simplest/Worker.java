@@ -15,9 +15,10 @@ public class Worker extends BaseAgent {
 		while (true){
 			waitAbit();
 			synchronized (resA) {
-				resA.use();
+                waitAbit();
 				synchronized (resB) {
 					resA.use();
+                    resB.use();
 					waitAbit();
 				}
 			}

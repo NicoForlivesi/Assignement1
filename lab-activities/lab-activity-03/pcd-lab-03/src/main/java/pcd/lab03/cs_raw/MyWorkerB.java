@@ -12,7 +12,8 @@ public class MyWorkerB extends Worker {
 	public void run(){
 		while (true){
 			/* critical section */
-			synchronized(lock){
+			synchronized(lock){ // oggetto lock su cui si fa synchronized, solo un thread alla volta può avere il lock
+                // su un oggetto
 			  b1();	
 			  b2();
 			}

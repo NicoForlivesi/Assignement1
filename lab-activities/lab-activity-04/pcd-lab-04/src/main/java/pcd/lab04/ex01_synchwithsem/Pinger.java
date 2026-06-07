@@ -2,12 +2,20 @@ package pcd.lab04.ex01_synchwithsem;
 
 public class Pinger extends ActiveComponent {
 
-	public Pinger() {
-	}	
+    private Semaphore pongDoneEvent, pingDoneEvent;
+
+	public Pinger(Semaphore pongDoneEvent, Semaphore pingDoneEvent) {
+        this.pongDoneEvent = pongDoneEvent;
+        this.pingDoneEvent = pingDoneEvent;
+	}
 	
 	public void run() {
 		while (true) {
-			println("ping");
+            try {
+                pongDoneEvent.acquire();
+                println("ping");
+                pingDoneEvent.release();
+            } catch (Exception e) {};
 		}
 	}
 }

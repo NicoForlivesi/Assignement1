@@ -4,18 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a5fd2e7c-6c21-4d27-8a2d-091dc669a796" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../assignments/assignment-02/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test0_Recv.java" beforeDir="false" afterPath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test0_Recv.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test0_Send.java" beforeDir="false" afterPath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test0_Send.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test1_MultipleSend.java" beforeDir="false" afterPath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test1_MultipleSend.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test1_Receive.java" beforeDir="false" afterPath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test1_Receive.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test2_Publisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test2_Publisher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test2_Subscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test2_Subscriber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test3_PublisherWithRoutingDirect.java" beforeDir="false" afterPath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test3_PublisherWithRoutingDirect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test3_SubscriberWithRoutingDirect.java" beforeDir="false" afterPath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test3_SubscriberWithRoutingDirect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test4_PublisherWithRoutingTopic.java" beforeDir="false" afterPath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test4_PublisherWithRoutingTopic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test4_SubscriberWithRoutingTopic.java" beforeDir="false" afterPath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rabbitmq/Test4_SubscriberWithRoutingTopic.java" afterDir="false" />
+    <list default="true" id="75fa04ed-16d4-4dec-85b6-cf20cb3adfd9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../assignments/assignment-04/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../assignments/assignment-04/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rmi/example_01/MyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rmi/example_01/MyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rmi/example_01/MyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rmi/example_01/MyServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rmi/example_01/RunClientSide.java" beforeDir="false" afterPath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rmi/example_01/RunClientSide.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rmi/example_01/RunServerSide.java" beforeDir="false" afterPath="$PROJECT_DIR$/pcd-lab-13/src/main/java/pcd/lab13/rmi/example_01/RunServerSide.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,37 +26,100 @@
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
-  <component name="ProjectId" id="3EaJ9Tw29E2euRs9MdjJGEhboWE" />
+  <component name="ProjectId" id="3EJXca5obdlGdRTb6rKlf362mNQ" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Application.RunClientSide.executor&quot;: &quot;Run&quot;,
+    &quot;Application.RunServerSide.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Test0_Recv.executor&quot;: &quot;Run&quot;,
+    &quot;Application.pcd.lab13.rmi.example_02.RunServerSide.executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/nicof/Desktop/I am an Engineer/Magistrale/PCD/Assignement1/lab-activities/lab-activity-13&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/nicof/OneDrive/Desktop/Universita/1 Anno Magistrale/PCD/Assignement1/lab-activities/lab-activity-13&quot;
   }
 }</component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.30387.90" />
-      </set>
-    </attachedChunks>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\nicof\OneDrive\Desktop\Universita\1 Anno Magistrale\PCD\Assignement1\lab-activities\lab-activity-13\pcd-lab-13\src\main\java\pcd\lab13\rmi" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Test0_Recv">
+    <configuration name="RunClientSide" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="pcd.lab13.rmi.example_02.RunClientSide" />
+      <module name="pcd-lab-13" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pcd.lab13.rmi.example_02.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RunServerSide" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="pcd.lab13.rmi.example_01.RunServerSide" />
+      <module name="pcd-lab-13" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pcd.lab13.rmi.example_01.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test0_Recv" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="pcd.lab13.rabbitmq.Test0_Recv" />
+      <module name="pcd-lab-13" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pcd.lab13.rabbitmq.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="pcd.lab13.rmi.example_02.RunServerSide" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="pcd.lab13.rmi.example_02.RunServerSide" />
+      <module name="pcd-lab-13" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pcd.lab13.rmi.example_02.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Test0_Recv" />
+        <item itemvalue="Application.RunClientSide" />
+        <item itemvalue="Application.pcd.lab13.rmi.example_02.RunServerSide" />
+        <item itemvalue="Application.RunServerSide" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a5fd2e7c-6c21-4d27-8a2d-091dc669a796" name="Changes" comment="" />
-      <created>1780410595961</created>
+      <changelist id="75fa04ed-16d4-4dec-85b6-cf20cb3adfd9" name="Changes" comment="" />
+      <created>1779897725383</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1780410595961</updated>
+      <updated>1779897725383</updated>
     </task>
     <servers />
   </component>
