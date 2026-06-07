@@ -15,8 +15,8 @@ public class BoundedBufferImpl<Item> implements BoundedBuffer<Item> {
 	private int maxSize;
 
 	public BoundedBufferImpl(int size) {
-		buffer = new LinkedList<Item>();
-		maxSize = size;
+		this.buffer = new LinkedList<Item>();
+		this.maxSize = size;
 	}
 
 	public synchronized void put(Item item) throws InterruptedException {
