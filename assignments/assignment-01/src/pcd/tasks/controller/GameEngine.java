@@ -29,6 +29,8 @@ public class GameEngine extends Thread {
 
     @Override
     public void run() {
+        long frameCount = 0;
+        long totalComputeTime = 0;
         try {
             long lastUpdateTime = System.currentTimeMillis();
             while (running && !board.isGameOver()) {
@@ -38,6 +40,7 @@ public class GameEngine extends Thread {
                 long now = System.currentTimeMillis();
                 double dt = (now - lastUpdateTime) * 0.001;
                 lastUpdateTime = now;
+                long computeStart = System.currentTimeMillis(); // Per il calcolo performance
 
                 // Il Master aggiorna la griglia e il dt prima di dare il via ai Worker
                 board.updateGrid2D();
@@ -69,6 +72,11 @@ public class GameEngine extends Thread {
                 checkHolesAndScores();
                 checkGameOver();
 
+                long computeEnd = System.currentTimeMillis(); // Calcolo performance, lo fermo prima della
+                // parte che si interfaccia col EDT così da avere misure consistenti in tutte le versioni
+                totalComputeTime += (computeEnd - computeStart);
+                frameCount++;
+
                 view.display(); // Display della view
 
                 // Attesa rendering del frame corrente prima di procedere al successivo
@@ -78,8 +86,13 @@ public class GameEngine extends Thread {
         } catch (InterruptedException | ExecutionException e) {
             Thread.currentThread().interrupt();
         } finally {
+            if (frameCount > 0) {
+                System.out.printf("Tempo medio per frame: %.2f ms (su %d frame)%n",
+                        (double) totalComputeTime / frameCount, frameCount);
+            }
             executor.shutdownNow(); // interrompe i thread del pool
             inputC.interrupt();
+            System.exit(0);
         }
     }
 
