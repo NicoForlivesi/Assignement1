@@ -131,7 +131,7 @@ public class Worker extends Thread {
         if (distSq < minSq) {
             // vuol dire che c'è una collissione fra le due palline:
             // Siamo già dentro il blocco synchronized(grid.getLockAt(r, c)) del ciclo principale.
-            double distance = Math.sqrt(distSq);
+            double distance = Math.sqrt(distSq); // Qui mi serve per forza far la radice
             if (distance == 0) return; // Protezione da divisioni per zero per sicurezza
 
             double nx = dx / distance; // urto elastico

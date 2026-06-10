@@ -3,12 +3,15 @@ package pcd.threads.util;
 /**
  * Come l'esempio delle barriere che abbiamo visto in laboratorio, ma con una piccola modifica
  * ovvero l'introduzione del campo "generation" che permette alla barriera di resettarsi automaticamente
- * per il ciclo fisico successivo, serve un po come protezione:
- * gestisce il caso in cui vi sia uno sbilanciamento nei tempi di risveglio dei thread (es. causato dallo scheduler del sistema operativo).
- * Ogni secondo i threads devono sincronizzarsi tante volte (una per ogni frame), quel campo serve per proteggere
- * il caso in cui certi thread siano molto lenti a "svegliarsi", la condizione impedisce ai thread veloci che sono già
- * passati al frame successivo di "imbrogliare" o bloccare i thread lenti rimasti al frame precedente
- * L'ultimo thread che arriva incrementa il turno: generation++ e sveglia tutti per iniziare la generation successiva.*/
+ * per il ciclo fisico successivo senza problemi, senza dover creare una nuova istanza dell'oggetto:
+ * il campo generation è un po come se fosse il turno, i thread che arrivano si mettono in attesa se currentGeneration == generation,
+ * l'ultimo che arriva vede nArrived == nParticipants, entra nell'if, azzera nArrived per il setup
+ * della barriera per il turno successivo, incrementa il numero del turno e sveglia tutti, i thread svegliati vedono
+ * che la condizione di attesa non è più rispettata e partono e la barriera è già pronta per il turno successivo.
+ * Questo concetto di fare il check sul numero del turno nel while e non per esempio su nArrived < nParticipants è
+ * fondamentale per una barriera ciclica sennò avverrebbe deadlock sicuramente!! Un thread veloce bloccato sulla wait
+ * del turno 2 e tutti gli altri bloccanti sulla wait del turno 1 e nessuno che incrementerebbe più nArrived.
+ * */
 public class CyclicBarrierImpl implements Barrier {
 
     private final int nParticipants;

@@ -4,7 +4,7 @@ import pcd.tasks.model.*;
 
 import java.util.Random;
 
-import static pcd.threads.util.Configuration.BOT_BALL_SPEED;
+import static pcd.tasks.util.Configuration.BOT_BALL_SPEED;
 
 // Classe che semplicemente gestisce il comportamento del bot, dando un impulso in direzione casuale
 // ogni 3000ms

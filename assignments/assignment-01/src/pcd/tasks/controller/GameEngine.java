@@ -91,7 +91,7 @@ public class GameEngine extends Thread {
                         (double) totalComputeTime / frameCount, frameCount);
             }
             executor.shutdownNow(); // interrompe i thread del pool
-            inputC.interrupt();
+            waitNSec(4); // Per far leggere "game over"
             System.exit(0);
         }
     }
@@ -174,5 +174,13 @@ public class GameEngine extends Thread {
         System.out.println("GAME OVER: Non ci sono più palline! Vince chi ha il punteggio più alto.");
         board.setGameOver(true);
         running = false;
+    }
+
+    private void waitNSec(int n) {
+        try {
+            Thread.sleep(n * 1000L);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -28,7 +28,6 @@ public class ViewFrame extends JFrame {
         this.renderSynch = renderSynch;
 
         setTitle("PCD Assignment 1 - Pool Game");
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent e) {

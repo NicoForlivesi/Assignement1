@@ -73,7 +73,7 @@ public class GameEngine extends Thread {
                 board.updateGrid2D();
                 board.setDt(dt);
 
-                masterBarrier.hitAndWaitAll(); // CP 0: Il Master dà il via al frame
+                masterBarrier.hitAndWaitAll(); // CP 0: Il Master dà il via
                 masterBarrier.hitAndWaitAll(); // CP 1: Attesa fine FASE 1 (Movimento)
                 masterBarrier.hitAndWaitAll(); // CP 2: Attesa fine FASE 2 (Collisioni)
 
@@ -101,8 +101,7 @@ public class GameEngine extends Thread {
             for (Worker worker : workers) {
                 worker.terminate();
             }
-            inputC.interrupt(); // sblocca la get() bloccante sennoò il componente potrebbe non accorgersi
-            // che è Game Over essendo fermo sulla get
+            waitNSec(4); // Per far leggere "game over"
             System.exit(0);
         }
     }
@@ -160,5 +159,13 @@ public class GameEngine extends Thread {
         System.out.println("GAME OVER: Non ci sono più palline! Vince chi ha il punteggio più alto.");
         board.setGameOver(true);
         running = false;
+    }
+
+    private void waitNSec(int n) {
+        try {
+            Thread.sleep(n * 1000L);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
