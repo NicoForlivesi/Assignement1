@@ -1,26 +1,26 @@
 package pcd.sequential.controller;
 
-import pcd.sequential.model.Board;
-import pcd.sequential.util.BoundedBuffer;
-import pcd.sequential.util.BoundedBufferImpl;
+import pcd.sequential.util.*;
+import pcd.sequential.model.*;
 
-public class InputController extends Thread{
-    private final BoundedBuffer<Cmd> cmdBuffer;
+import java.awt.event.KeyEvent;
+
+public class InputController extends Thread {
+    private final BoundedBuffer<Integer> buffer;
     private final Board board;
 
-    public InputController(Board board) {
-        this.cmdBuffer = new BoundedBufferImpl<>(100);
+    public InputController(Board board, BoundedBuffer<Integer> buffer) {
+        this.buffer = buffer;
         this.board = board;
-        setDaemon(true); // muore con il programma principale
+        setDaemon(true);
     }
 
     @Override
     public void run() {
         while (!board.isGameOver()) {
             try {
-                // Si blocca in attesa di comandi dalla View
-                Cmd cmd = cmdBuffer.get();
-                cmd.execute(board);
+                int keyCode = buffer.get();
+                handleKey(keyCode);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
                 break;
@@ -28,12 +28,15 @@ public class InputController extends Thread{
         }
     }
 
-    // Metodo esposto alla View per iniettare i comandi
-    public void notifyNewCmd(Cmd cmd) {
-        try {
-            cmdBuffer.put(cmd);
-        } catch (InterruptedException ex) {
-            Thread.currentThread().interrupt();
+    private void handleKey(int keyCode) {
+        Ball playerBall = board.getPlayerBall();
+        if (playerBall == null || !playerBall.stillAlive()) return;
+        double speed = Configuration.PLAYER_BALL_SPEED;
+        switch (keyCode) {
+            case KeyEvent.VK_W -> playerBall.kick(new V2d(0, -speed));
+            case KeyEvent.VK_S -> playerBall.kick(new V2d(0, speed));
+            case KeyEvent.VK_A -> playerBall.kick(new V2d(-speed, 0));
+            case KeyEvent.VK_D -> playerBall.kick(new V2d(speed, 0));
         }
     }
 }

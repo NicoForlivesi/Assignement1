@@ -1,11 +1,9 @@
 package pcd.threads.view;
 
-import pcd.threads.controller.InputController;
-import pcd.threads.controller.KickPlayerCmd;
 import pcd.threads.model.Ball;
 import pcd.threads.model.Board;
 import pcd.threads.model.P2d;
-import pcd.threads.model.V2d;
+import pcd.threads.util.BoundedBuffer;
 import pcd.threads.util.Configuration;
 
 import javax.swing.*;
@@ -23,7 +21,7 @@ public class ViewFrame extends JFrame {
 
     private final Set<Integer> pressedKeys = new HashSet<>();
 
-    public ViewFrame(Board board, InputController inputController, RenderSynch renderSynch) {
+    public ViewFrame(Board board, BoundedBuffer<Integer> inputBuffer, RenderSynch renderSynch) {
         this.board = board;
         this.renderSynch = renderSynch;
 
@@ -56,19 +54,28 @@ public class ViewFrame extends JFrame {
         });
 
         Timer inputTimer = new Timer(15, e -> {
-            double speed = Configuration.PLAYER_BALL_SPEED; // è in pixel/secondo
-            double vx = 0, vy = 0;
-            // Modifica velocità in base al tasto premuto e invio all'InputController (ci si muove con WASD)
-            if (pressedKeys.contains(KeyEvent.VK_W)) { vy = -speed; }
-            if (pressedKeys.contains(KeyEvent.VK_S)) { vy = speed; }
-            if (pressedKeys.contains(KeyEvent.VK_A)) { vx = -speed; }
-            if (pressedKeys.contains(KeyEvent.VK_D)) { vx = speed; }
-
-            if (vx != 0 || vy != 0) {
-                inputController.notifyNewCmd(new KickPlayerCmd(new V2d(vx, vy)));
+            for (int key : pressedKeys) {
+                try {
+                    inputBuffer.put(key); // produttore per il BoundedBuffer
+                } catch (InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                }
             }
         });
         inputTimer.start();
+
+//        Timer inputTimer = new Timer(15, e -> {
+//            // La View si limita a notificare i tasti premuti,
+//            // senza interpretare la logica di movimento
+//            for (int key : pressedKeys) {
+//                try {
+//                    inputController.getBuffer().put(key);
+//                } catch (InterruptedException ex) {
+//                    Thread.currentThread().interrupt();
+//                }
+//            }
+//        });
+//        inputTimer.start();
 
         setLocationRelativeTo(null);
         setVisible(true);

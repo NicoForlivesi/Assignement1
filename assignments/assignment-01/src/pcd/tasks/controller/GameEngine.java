@@ -15,14 +15,12 @@ public class GameEngine extends Thread {
     private final RenderSynch renderSynch;
     private final int nWorkers;
     private final ExecutorService executor;
-    private final InputController inputC;
     private volatile boolean running = true;
 
-    public GameEngine(Board board, View view, RenderSynch renderSynch, InputController inputC) {
+    public GameEngine(Board board, View view, RenderSynch renderSynch) {
         this.board = board;
         this.view = view;
         this.renderSynch = renderSynch;
-        this.inputC = inputC;
         this.nWorkers = Configuration.N_WORKERS;
         this.executor = Executors.newFixedThreadPool(nWorkers); // Creazione del pool di thread. Fissato a nWorkers
     }

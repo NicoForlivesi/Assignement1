@@ -5,140 +5,47 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31ee3258-d8c1-422b-97d4-8f988a6d0e20" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/doc/report_ass1.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pcd/jpf/TestBarrier.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pcd/jpf/TestBarrier.jpf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pcd/jpf/TestBoundedBuffer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pcd/jpf/TestBoundedBuffer.jpf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pcd/jpf/TestRenderSynch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pcd/jpf/TestRenderSynch.jpf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/repo_ass1.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/report_ass1.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pcd/sequential/PoolGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pcd/sequential/PoolGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pcd/sequential/controller/Cmd.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pcd/sequential/controller/InputController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pcd/sequential/controller/InputController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pcd/sequential/controller/KickPlayerCmd.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pcd/sequential/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pcd/sequential/view/View.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pcd/sequential/view/ViewFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pcd/sequential/view/ViewFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pcd/tasks/controller/BotController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pcd/tasks/controller/BotController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pcd/tasks/PoolGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pcd/tasks/PoolGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pcd/tasks/controller/Cmd.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pcd/tasks/controller/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pcd/tasks/controller/GameEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pcd/tasks/controller/InputController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pcd/tasks/controller/InputController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pcd/tasks/controller/KickPlayerCmd.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pcd/tasks/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pcd/tasks/view/View.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pcd/tasks/view/ViewFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pcd/tasks/view/ViewFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pcd/threads/PoolGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pcd/threads/PoolGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pcd/threads/controller/Cmd.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pcd/threads/controller/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pcd/threads/controller/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pcd/threads/controller/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pcd/threads/controller/Worker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pcd/threads/util/CyclicBarrierImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pcd/threads/util/CyclicBarrierImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pcd/threads/controller/InputController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pcd/threads/controller/InputController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pcd/threads/controller/KickPlayerCmd.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pcd/threads/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pcd/threads/view/View.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pcd/threads/view/ViewFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pcd/threads/view/ViewFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sequential/PoolGame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sequential/controller/BotController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sequential/controller/Cmd.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sequential/controller/GameEngine.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sequential/controller/InputController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sequential/controller/KickPlayerCmd.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sequential/model/Ball$BallType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sequential/model/Ball.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sequential/model/Board.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sequential/model/BoardConf.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sequential/model/LargeBoardConf.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sequential/model/MassiveBoardConf.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sequential/model/MinimalBoardConf.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sequential/model/P2d.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sequential/model/V2d.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sequential/util/BoundedBuffer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sequential/util/BoundedBufferImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sequential/util/Configuration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sequential/view/RenderSynch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sequential/view/View.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sequential/view/ViewFrame$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sequential/view/ViewFrame$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sequential/view/ViewFrame$VisualizerPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sequential/view/ViewFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sketch01/Ball.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sketch01/BallViewInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sketch01/Board.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sketch01/BoardConf.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sketch01/Boundary.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sketch01/LargeBoardConf.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sketch01/MassiveBoardConf.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sketch01/MinimalBoardConf.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sketch01/P2d.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sketch01/RenderSynch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sketch01/Sketch01.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sketch01/V2d.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sketch01/View.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sketch01/ViewFrame$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sketch01/ViewFrame$VisualiserPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sketch01/ViewFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sketch01/ViewModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sketch02/Sketch02.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sketch02/controller/ActiveController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sketch02/controller/Cmd.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sketch02/controller/IncCmd.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sketch02/controller/ResetCmd.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sketch02/model/AutonomousUpdater.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sketch02/model/Counter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sketch02/model/CounterObserver.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sketch02/util/BoundedBuffer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sketch02/util/BoundedBufferImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sketch02/view/View.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sketch02/view/ViewFrame$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sketch02/view/ViewFrame$VisualiserPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sketch02/view/ViewFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/sketch02/view/ViewModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/PoolGame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/controller/BotController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/controller/Cmd.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/controller/GameEngine.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/controller/InputController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/controller/KickPlayerCmd.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/controller/WorkerTask.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/model/Ball$BallType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/model/Ball.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/model/Board.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/model/BoardConf.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/model/Grid2D.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/model/LargeBoardConf.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/model/MassiveBoardConf.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/model/MinimalBoardConf.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/model/P2d.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/model/V2d.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/util/BoundedBuffer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/util/BoundedBufferImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/util/Configuration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/view/RenderSynch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/view/View.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/view/ViewFrame$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/view/ViewFrame$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/view/ViewFrame$VisualizerPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/view/ViewFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/PoolGame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/controller/BotController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/PoolGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pcd/tasks/PoolGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/controller/GameEngine.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pcd/tasks/controller/GameEngine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/controller/InputController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pcd/tasks/controller/InputController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/view/View.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pcd/tasks/view/View.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/view/ViewFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pcd/tasks/view/ViewFrame$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/view/ViewFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pcd/tasks/view/ViewFrame$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/view/ViewFrame$VisualizerPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pcd/tasks/view/ViewFrame$VisualizerPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pcd/tasks/view/ViewFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pcd/tasks/view/ViewFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/PoolGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pcd/threads/PoolGame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/controller/Cmd.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/controller/GameEngine.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/controller/InputController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/controller/GameEngine.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pcd/threads/controller/GameEngine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/controller/InputController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pcd/threads/controller/InputController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/controller/KickPlayerCmd.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/controller/Worker.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/model/Ball$BallType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/model/Ball.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/model/Board.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/model/BoardConf.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/model/Grid2D.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/model/LargeBoardConf.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/model/MassiveBoardConf.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/model/MinimalBoardConf.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/model/P2d.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/model/V2d.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/util/Barrier.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/util/BoundedBuffer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/util/BoundedBufferImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/util/Configuration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/util/CyclicBarrierImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/view/RenderSynch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/view/View.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/view/ViewFrame$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/view/ViewFrame$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/view/ViewFrame$VisualizerPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/view/ViewFrame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/util/CyclicBarrierImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pcd/threads/util/CyclicBarrierImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/view/View.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pcd/threads/view/View.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/view/ViewFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pcd/threads/view/ViewFrame$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/view/ViewFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pcd/threads/view/ViewFrame$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/view/ViewFrame$VisualizerPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pcd/threads/view/ViewFrame$VisualizerPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pcd/threads/view/ViewFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pcd/threads/view/ViewFrame.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,23 +74,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.PoolGame.executor": "Run",
-    "Application.TestBarrier.executor": "Run",
-    "Application.pcd.sequential.PoolGame.executor": "Run",
-    "Application.pcd.tasks.PoolGame.executor": "Run",
-    "Maven.pcd-ass-01 [clean].executor": "Run",
-    "Maven.pcd-ass-01 [compile].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/nicof/OneDrive/Desktop/Universita/1 Anno Magistrale/PCD/Assignement1/assignments/assignment-01/doc"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.PoolGame.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestBarrier.executor&quot;: &quot;Run&quot;,
+    &quot;Application.pcd.sequential.PoolGame.executor&quot;: &quot;Run&quot;,
+    &quot;Application.pcd.tasks.PoolGame.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.pcd-ass-01 [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.pcd-ass-01 [compile].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/nicof/OneDrive/Desktop/Universita/1 Anno Magistrale/PCD/Assignement1/assignments/assignment-01&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\nicof\OneDrive\Desktop\Universita\1 Anno Magistrale\PCD\Assignement1\assignments\assignment-01\doc" />
@@ -202,7 +109,7 @@
       <recent name="pcd.threads.view" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.PoolGame">
+  <component name="RunManager" selected="Application.pcd.sequential.PoolGame">
     <configuration name="PoolGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="pcd.threads.PoolGame" />
       <module name="pcd-ass-01" />
@@ -268,10 +175,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.PoolGame" />
-        <item itemvalue="Application.TestBarrier" />
-        <item itemvalue="Application.pcd.tasks.PoolGame" />
         <item itemvalue="Application.pcd.sequential.PoolGame" />
+        <item itemvalue="Application.PoolGame" />
+        <item itemvalue="Application.pcd.tasks.PoolGame" />
+        <item itemvalue="Application.TestBarrier" />
       </list>
     </recent_temporary>
   </component>

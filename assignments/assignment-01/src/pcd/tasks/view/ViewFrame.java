@@ -3,6 +3,7 @@ package pcd.tasks.view;
 import pcd.tasks.controller.*;
 import pcd.tasks.model.*;
 import pcd.tasks.util.Configuration;
+import pcd.tasks.util.BoundedBuffer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,7 +20,7 @@ public class ViewFrame extends JFrame {
 
     private final Set<Integer> pressedKeys = new HashSet<>();
 
-    public ViewFrame(Board board, InputController inputController, RenderSynch renderSynch) {
+    public ViewFrame(Board board, BoundedBuffer<Integer> inputBuffer, RenderSynch renderSynch) {
         this.board = board;
         this.renderSynch = renderSynch;
 
@@ -52,16 +53,12 @@ public class ViewFrame extends JFrame {
         });
 
         Timer inputTimer = new Timer(15, e -> {
-            double speed = Configuration.PLAYER_BALL_SPEED; // è in pixel/secondo
-            double vx = 0, vy = 0;
-            // Modifica velocità in base al tasto premuto e invio all'InputController (ci si muove con WASD)
-            if (pressedKeys.contains(KeyEvent.VK_W)) { vy = -speed; }
-            if (pressedKeys.contains(KeyEvent.VK_S)) { vy = speed; }
-            if (pressedKeys.contains(KeyEvent.VK_A)) { vx = -speed; }
-            if (pressedKeys.contains(KeyEvent.VK_D)) { vx = speed; }
-
-            if (vx != 0 || vy != 0) {
-                inputController.notifyNewCmd(new KickPlayerCmd(new V2d(vx, vy)));
+            for (int key : pressedKeys) {
+                try {
+                    inputBuffer.put(key); // produttore per il BoundedBuffer
+                } catch (InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                }
             }
         });
         inputTimer.start();

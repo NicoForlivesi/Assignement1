@@ -4,6 +4,7 @@ import pcd.tasks.model.*;
 import pcd.tasks.controller.*;
 import pcd.tasks.util.*;
 import pcd.tasks.view.*;
+import pcd.tasks.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,14 +36,15 @@ public class PoolGame {
 
         Board board = new Board(allBalls);
         RenderSynch renderSynch = new RenderSynch(); // Monitor di sincronizzazione fra GameEngine e EDT
-        InputController inputController = new InputController(board); // Consumatore di input da tastiera
-        inputController.start();
+        BoundedBuffer<Integer> inputBuffer = new BoundedBufferImpl<>(100);
+        InputController inputController = new InputController(board, inputBuffer); // Consumatore di input da tastiera
         BotController botController = new BotController(board); // Creazione del componente attivo che
         // gestisce il movimento casuale del bot
+        View view = new View(board, inputBuffer, renderSynch); // Inizializzazione view
+
+
+        inputController.start();
         botController.start();
-
-        View view = new View(board, inputController, renderSynch); // Inizializzazione view
-
-        return new GameEngine(board, view, renderSynch, inputController); // Ritorno il GameEngine pronto
+        return new GameEngine(board, view, renderSynch); // Ritorno il GameEngine pronto
     }
 }

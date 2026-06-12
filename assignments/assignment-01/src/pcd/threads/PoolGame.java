@@ -4,6 +4,8 @@ import pcd.threads.controller.BotController;
 import pcd.threads.controller.GameEngine;
 import pcd.threads.controller.InputController;
 import pcd.threads.model.*;
+import pcd.threads.util.BoundedBuffer;
+import pcd.threads.util.BoundedBufferImpl;
 import pcd.threads.util.Configuration;
 import pcd.threads.view.RenderSynch;
 import pcd.threads.view.View;
@@ -38,14 +40,15 @@ public class PoolGame {
 
         Board board = new Board(allBalls);
         RenderSynch renderSynch = new RenderSynch(); // Monitor di sincronizzazione fra GameEngine e EDT
-        InputController inputController = new InputController(board); // Consumatore di input da tastiera
-        inputController.start();
+        BoundedBuffer<Integer> inputBuffer = new BoundedBufferImpl<>(100);
+        InputController inputController = new InputController(board, inputBuffer); // Consumatore di input da tastiera
         BotController botController = new BotController(board); // Creazione del componente attivo che
         // gestisce il movimento casuale del bot
+        View view = new View(board, inputBuffer, renderSynch); // Inizializzazione view
+
+
+        inputController.start();
         botController.start();
-
-        View view = new View(board, inputController, renderSynch); // Inizializzazione view
-
-        return new GameEngine(board, view, renderSynch, inputController); // Ritorno il GameEngine pronto
+        return new GameEngine(board, view, renderSynch); // Ritorno il GameEngine pronto
     }
 }
