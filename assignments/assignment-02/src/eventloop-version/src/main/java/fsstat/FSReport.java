@@ -3,12 +3,12 @@ package fsstat;
 /**
  * Report sulle statistiche del filesystem.
  * Oggetto mutabile: è sicuro perché viene aggiornato SOLO dall'event-loop
- * (VerticleBase garantisce esecuzione single-threaded delle callback).
+ * di Vert.x, che è single-thread, quindi nessuna race condition possibile.
  */
 public class FSReport {
 
     private long totalFiles;
-    private long[] bands;
+    private final long[] bands;
     private long overflow;
     private final long maxFS;
     private final int nb;
@@ -17,10 +17,11 @@ public class FSReport {
     public FSReport(int nb, long maxFS) {
         this.nb = nb;
         this.maxFS = maxFS;
-        this.step = maxFS / nb;
+        this.step = (nb > 0) ? maxFS / nb : 1;
         this.bands = new long[nb];
     }
 
+    /** Registra un file di dimensione size. */
     public void addFile(long size) {
         totalFiles++;
         if (size > maxFS) {
@@ -31,6 +32,7 @@ public class FSReport {
         }
     }
 
+    /** Unisce i risultati di un sotto-albero in questo report. */
     public void merge(FSReport other) {
         this.totalFiles += other.totalFiles;
         this.overflow += other.overflow;
@@ -38,8 +40,6 @@ public class FSReport {
             this.bands[i] += other.bands[i];
         }
     }
-
-    public long getTotalFiles() { return totalFiles; }
 
     @Override
     public String toString() {

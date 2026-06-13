@@ -14,30 +14,26 @@ import java.util.function.Consumer;
 /**
  * Estensione interattiva di FSStatLib con supporto per:
  * - Stop asincrono della scansione tramite AtomicBoolean
- * - Aggiornamenti dinamici tramite timer periodico (throttling)
+ * - Aggiornamenti dinamici tramite timer periodico
  *
  * Rispetto a FSStatLib aggiunge:
- * 1. Un AtomicBoolean stopped controllato prima di ogni processEntry:
- *    se true, la ricorsione si interrompe restituendo un report vuoto.
- *    AtomicBoolean è necessario perché stop() viene chiamato dal thread Swing (EDT)
- *    mentre la scansione gira sull'event-loop — serve visibilità cross-thread.
+ * Un AtomicBoolean stopped controllato in varie porzioni del codice per mantenere reattività del tasto stop, questo
+ * AtomicBoolean se a true, la ricorsione si interrompe restituendo un report vuoto, che viene poi mergiato con quello
+ * trovato fin ora.
+ * AtomicBoolean è necessario perché stop() viene chiamato dall' EDT mentre la scansione gira sull'event-loop, sono
+ * due thread diversi.
  *
- * 2. Un FSReport globale "live" aggiornato ad ogni file trovato.
- *    Un timer periodico (vertx.setPeriodic) ne scatta uno snapshot ogni 200ms
- *    e lo passa alla callback onUpdate — così la GUI riceve aggiornamenti fluidi
- *    senza essere inondata da 27000 invokeLater (uno per file).
+ * Un FSReport globale "live" aggiornato ad ogni sotto-albero completato.
+ * Un timer periodico ne scatta uno snapshot ogni 200ms tramite getLiveReport() e lo passa alla
+ * callback "onUpdate" così la GUI riceve aggiornamenti fluidi senza essere inondata da invokeLater per ogni file.
  */
 public class FSStatLibInteractive {
 
     private final Vertx vertx = Vertx.vertx();
 
-    // Flag di stop: scritto dal thread Swing (EDT), letto dall'event-loop.
-    // AtomicBoolean garantisce visibilità cross-thread senza sincronizzazione esplicita.
-    // È final perché non riassegniamo l'oggetto, usiamo .set() per modificarne il valore.
+    // Flag di stop scritto dall'EDT e letto dall'event-loop.
     private final AtomicBoolean stopped = new AtomicBoolean(false);
 
-    // Report "live" globale: accumulatore aggiornato ad ogni file trovato.
-    // Acceduto solo dall'event-loop → nessuna race condition.
     private FSReportExt liveReport;
 
     // Parametri della scansione corrente, impostati a ogni chiamata di getFSReport.
@@ -54,11 +50,10 @@ public class FSStatLibInteractive {
         this.excludedDirs = excludedDirs;
         this.liveReport = new FSReportExt(nb, maxFS);
 
-        // Il timer scatta ogni 200ms sull'event-loop: fa uno snapshot del report live
-        // e lo passa alla GUI. Così invece di un invokeLater per ogni file,
-        // ne arrivano circa 5 al secondo — fluidi e gestibili dall'EDT di Swing.
-        long timerId = vertx.setPeriodic(200, id ->
-                onUpdate.accept(liveReport.snapshot())
+        // Il timer scatta ogni 200ms sull'event-loop e passa uno snapshot del liveReport alla GUI.
+        long timerId = vertx.setPeriodic(200, id -> // Senza questo timer l'EDT non riesce a gestire
+                // l'aggiornamento sulla GUI in maniera sufficientemente fluida
+                onUpdate.accept(getLiveReport())
         );
 
         return scanDirectory(vertx.fileSystem(), dir)
@@ -81,12 +76,8 @@ public class FSStatLibInteractive {
         return vertx.close();
     }
 
-    // -------------------------------------------------------------------------
-    // Implementazione privata
-    // -------------------------------------------------------------------------
-
     private Future<FSReportExt> scanDirectory(FileSystem fs, String dir) {
-        // Se è stato richiesto lo stop, interrompiamo la ricorsione restituendo
+        // Se è stato richiesto lo stop, interrompo la ricorsione restituendo
         // un report vuoto: la Future si completa subito senza fare altre I/O.
         if (stopped.get()) {
             return Future.succeededFuture(new FSReportExt(nb, maxFS));
@@ -98,6 +89,8 @@ public class FSStatLibInteractive {
                     return Future.succeededFuture(List.of());
                 })
                 .compose(entries -> {
+                    if (stopped.get()) return Future.succeededFuture(new FSReportExt(nb, maxFS)); // Check anche qui per
+                    // mantenere reattivo il tasto stop
                     List<Future<FSReportExt>> futures = new ArrayList<>();
 
                     for (String entry : entries) {
@@ -107,32 +100,37 @@ public class FSStatLibInteractive {
                     }
 
                     return Future.all(futures).map(ignored -> {
+                        if (stopped.get()) return new FSReportExt(nb, maxFS); // Se stopped, non fare merge
                         FSReportExt report = new FSReportExt(nb, maxFS);
-                        futures.forEach(f -> report.merge(f.result()));
+                        futures.forEach(f -> {
+                            FSReportExt sub = f.result();
+                            report.merge(sub);
+                            liveReport.merge(sub); // aggiorna il live progressivamente
+                        });
                         return report;
                     });
                 });
     }
 
     private Future<FSReportExt> processEntry(FileSystem fs, String entry) {
+        // Ricontrollo il flag stopped anche per ogni Entry
         if (stopped.get()) {
             return Future.succeededFuture(new FSReportExt(nb, maxFS));
         }
 
+        // Uguale alla versione base
         return fs.props(entry)
                 .recover(err -> {
                     log("WARNING: skipping inaccessible entry: " + entry);
                     return Future.succeededFuture(null);
                 })
                 .compose(props -> {
+                    if (stopped.get()) return Future.succeededFuture(new FSReportExt(nb, maxFS)); // Check anche qui per
+                    // mantenere reattivo il tasto stop.
                     if (props == null) {
                         return Future.succeededFuture(new FSReportExt(nb, maxFS));
                     }
                     if (props.isRegularFile()) {
-                        // Aggiorniamo solo il report live: il timer periodico
-                        // si occupa di notificare la GUI a intervalli regolari.
-                        liveReport.addFile(props.size());
-
                         FSReportExt r = new FSReportExt(nb, maxFS);
                         r.addFile(props.size());
                         return Future.succeededFuture(r);
@@ -144,5 +142,9 @@ public class FSStatLibInteractive {
 
     private void log(String msg) {
         System.out.println("[" + Thread.currentThread().getName() + "] " + msg);
+    }
+
+    public FSReportExt getLiveReport() {
+        return liveReport.snapshot();
     }
 }

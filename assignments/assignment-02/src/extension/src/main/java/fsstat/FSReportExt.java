@@ -47,10 +47,10 @@ public class FSReportExt {
      * del report corrente, evitando che la GUI legga dati parzialmente aggiornati
      * mentre l'event-loop sta ancora modificando il report live.
      */
-    public FSReport snapshot() {
-        FSReport copy = new FSReport(nb, maxFS);
+    public FSReportExt snapshot() {
+        FSReportExt copy = new FSReportExt(nb, maxFS);
         copy.totalFiles = this.totalFiles;
-        copy.overflow   = this.overflow;
+        copy.overflow = this.overflow;
         System.arraycopy(this.bands, 0, copy.bands, 0, nb);
         return copy;
     }

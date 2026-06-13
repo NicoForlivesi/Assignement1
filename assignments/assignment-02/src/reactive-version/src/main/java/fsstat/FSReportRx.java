@@ -2,13 +2,14 @@ package fsstat;
 
 /**
  * Report sulle statistiche del filesystem.
- * Stesso report usato anche per la versione con event-loop
+ * Questa versione è diversa rispetto a quella con Event-loop, uso un approccio più verso il
+ * funzionale, senza modificare Report, ma fornendone uno nuovo
  */
 public class FSReportRx {
 
-    private long totalFiles;
-    private long[] bands;
-    private long overflow;
+    private final long totalFiles;
+    private final long[] bands;
+    private final long overflow;
     private final long maxFS;
     private final int nb;
     private final long step;

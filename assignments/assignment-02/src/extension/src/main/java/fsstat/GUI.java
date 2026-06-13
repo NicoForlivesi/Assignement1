@@ -5,18 +5,9 @@ import java.awt.*;
 import java.util.Set;
 
 /**
- * GUI minimale con:
- * - Campo per inserire la directory
- * - Pulsante Start per avviare la scansione
- * - Pulsante Stop per interromperla
- * - TextArea che si aggiorna dinamicamente con il report parziale
- *
- * Attenzione ai thread:
  * - La callback onUpdate arriva dall'event-loop di Vert.x
  * - Gli aggiornamenti alla GUI DEVONO passare per SwingUtilities.invokeLater()
- *   perché Swing è single-threaded sul proprio thread (EDT).
- *   Modificare componenti Swing da un altro thread (come l'event-loop di Vert.x)
- *   è un errore e può causare comportamenti non deterministici.
+ *   perché Swing è single-threaded sul proprio thread EDT.
  */
 public class GUI extends JFrame {
 
@@ -93,11 +84,12 @@ public class GUI extends JFrame {
                             statusLabel.setText("Scanning... files found: " + partialReport.getTotalFiles());
                         })
                 )
-                .onSuccess(finalReport -> SwingUtilities.invokeLater(() -> {
-                    reportArea.setText(finalReport.toString());
+                .onSuccess(ignored -> SwingUtilities.invokeLater(() -> {
+                    FSReportExt last = lib.getLiveReport(); // restituisce lo snapshot
+                    reportArea.setText(last.toString());
                     String msg = lib.isStopped()
-                            ? "Scan stopped. Partial result: " + finalReport.getTotalFiles() + " files."
-                            : "Scan complete. Total files: "   + finalReport.getTotalFiles();
+                            ? "Scan stopped. Partial result: " + last.getTotalFiles() + " files."
+                            : "Scan complete. Total files: "   + last.getTotalFiles();
                     statusLabel.setText(msg);
                     startButton.setEnabled(true);
                     stopButton.setEnabled(false);

@@ -35,9 +35,11 @@ public class FSStatLibVT {
             return new FSReportVT(nb, maxFS);
         }
 
-        FSReportVT report = new FSReportVT(nb, maxFS); // Report immutabile che verrà aggiornato inc aso con withFile
+        // FSReportVT è immutabile: withFile e merge non modificano l'oggetto
+        // ma restituiscono sempre una nuova istanza aggiornata.
+        FSReportVT report = new FSReportVT(nb, maxFS);
         // Ogni volta che troviamo una sotto-directory, lanciamo un virtual thread che esegue scanDir() su quella directory.
-        // submit() ritorna un Future<FSReportVT>, quindi raccogliamo tutti i Future.
+        // submit() ritorna una Future<FSReportVT>, quindi raccogliamo tutti i Future.
         List<Future<FSReportVT>> futures = new ArrayList<>(); // Importante: questa è la Future di java.util.concurrent,
         // non c'entra niente con quella usata nella versione con vertx, questa è bloccante attraverso .get che chiamiamo dopo.
 
@@ -51,7 +53,7 @@ public class FSStatLibVT {
                         scanDir(entry, excluded, maxFS, nb, executor)
                 ));
             } else {
-                report = report.withFile(entry.length()); // Caso file aggiorniamo il report locale
+                report = report.withFile(entry.length()); // Caso file aggiorno il report locale
             }
         }
 

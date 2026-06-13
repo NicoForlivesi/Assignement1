@@ -3,7 +3,6 @@ package fsstat;
 /**
  * Report sulle statistiche del filesystem.
  * Versione usata per l'implementazione con Virtual Threads.
- * Identico a FSReportRx, ma con nome diverso.
  */
 public class FSReportVT {
 

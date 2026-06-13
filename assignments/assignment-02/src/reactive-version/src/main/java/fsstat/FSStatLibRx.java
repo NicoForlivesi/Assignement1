@@ -16,15 +16,16 @@ public class FSStatLibRx {
      * Restituisce un Flowable che emette TUTTI i file presenti nella directory
      * (e sotto-directory), esclusi quelli filtrati.
      * - È un flusso "cold": la scansione parte solo quando qualcuno chiama .subscribe().
-     * - Usiamo il metodo .defer() per evitare che la scansione parta subito.
+     * - Uso il metodo .defer() per evitare che la scansione parta subito.
      * - Usiamo uno scheduler per la parallelizzazione della lettura delle directory.
      */
     private Flowable<File> scanDir(File dir, Set<String> excluded) {
-        return Flowable.defer(() -> // .defer serve a rimandare l'esecuzione del codice della lambda fino al momento
+        return Flowable.defer(() -> // .defer serve a rimandare l'esecuzione della lambda fino al momento
             // in cui non si chiama .subscribe
                 Flowable.fromCallable(() -> dir.listFiles())
-                        .subscribeOn(Schedulers.io())   // parallelizza la lettura della directory, spostando le letture
-                        // su workers, questo permette di leggere più directory in parallelo.
+                        .subscribeOn(Schedulers.io()) // sposta la lettura della directory sul pool I/O di RxJava, che
+                        // viene gestito dinamicamente dal framework, flatMap sottoscrive i sotto-flussi ricorsivi in modo
+                        // concorrente, ottenendo la parallelizzazione della visita..
                         .flatMap(entries -> {
                             if (entries == null) {
                                 return Flowable.empty(); // directory non leggibile
