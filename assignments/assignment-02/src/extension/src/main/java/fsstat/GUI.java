@@ -12,15 +12,17 @@ import java.util.Set;
  * - TextArea che si aggiorna dinamicamente con il report parziale
  *
  * Attenzione ai thread:
- * - La callback onUpdate arriva dal thread dell'event-loop di Vert.x
+ * - La callback onUpdate arriva dall'event-loop di Vert.x
  * - Gli aggiornamenti alla GUI DEVONO passare per SwingUtilities.invokeLater()
- *   altrimenti violiamo il modello single-thread di Swing
+ *   perché Swing è single-threaded sul proprio thread (EDT).
+ *   Modificare componenti Swing da un altro thread (come l'event-loop di Vert.x)
+ *   è un errore e può causare comportamenti non deterministici.
  */
 public class GUI extends JFrame {
 
     private static final long DEFAULT_MAX_FS = 1_000_000L;
     private static final int DEFAULT_NB = 8;
-    private static final Set<String> EXCLUDED = Set.of("");
+    private static final Set<String> EXCLUDED = Set.of("logs");
 
     private final FSStatLibInteractive lib = new FSStatLibInteractive();
 
@@ -42,7 +44,7 @@ public class GUI extends JFrame {
 
         dirField = new JTextField("");
         startButton = new JButton("Start");
-        stopButton = new JButton("Stop");
+        stopButton  = new JButton("Stop");
         stopButton.setEnabled(false);
 
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 4, 0));
@@ -67,9 +69,8 @@ public class GUI extends JFrame {
         add(scrollPane, BorderLayout.CENTER);
         add(statusLabel, BorderLayout.SOUTH);
 
-        // Listener sui pulsanti
         startButton.addActionListener(e -> startScan());
-        stopButton.addActionListener(e -> stopScan()); // Bindo il pulsante all'atomicBoolean "stopped"
+        stopButton.addActionListener(e -> stopScan());
     }
 
     private void startScan() {
@@ -84,20 +85,19 @@ public class GUI extends JFrame {
         reportArea.setText("");
         statusLabel.setText("Scanning " + dir + "...");
 
-        lib.getFSReport(dir, DEFAULT_MAX_FS, DEFAULT_NB, EXCLUDED, partialReport -> {
-                    // Questa callback arriva dall'event-loop di Vert.x, NON dal thread Swing.
-                    // SwingUtilities.invokeLater garantisce che l'aggiornamento alla GUI
-                    // avvenga sul thread EDT (Event Dispatch Thread) di Swing.
-                    SwingUtilities.invokeLater(() -> {
-                        reportArea.setText(partialReport.toString());
-                        statusLabel.setText("Scanning... files found so far: " + partialReport.getTotalFiles());
-                    });
-                })
+        lib.getFSReport(dir, DEFAULT_MAX_FS, DEFAULT_NB, EXCLUDED,
+                        // onUpdate: chiamata dall'event-loop ad ogni file trovato.
+                        // SwingUtilities.invokeLater sposta l'aggiornamento sull'EDT di Swing.
+                        partialReport -> SwingUtilities.invokeLater(() -> {
+                            reportArea.setText(partialReport.toString());
+                            statusLabel.setText("Scanning... files found: " + partialReport.getTotalFiles());
+                        })
+                )
                 .onSuccess(finalReport -> SwingUtilities.invokeLater(() -> {
                     reportArea.setText(finalReport.toString());
                     String msg = lib.isStopped()
                             ? "Scan stopped. Partial result: " + finalReport.getTotalFiles() + " files."
-                            : "Scan complete. Total files: " + finalReport.getTotalFiles();
+                            : "Scan complete. Total files: "   + finalReport.getTotalFiles();
                     statusLabel.setText(msg);
                     startButton.setEnabled(true);
                     stopButton.setEnabled(false);
@@ -110,12 +110,13 @@ public class GUI extends JFrame {
     }
 
     private void stopScan() {
-        lib.stop();
+        lib.stop(); // scrive stopped=true sull'AtomicBoolean, visibile all'event-loop
         statusLabel.setText("Stopping...");
         stopButton.setEnabled(false);
     }
 
     public static void main(String[] args) {
+        // Tutta la creazione della GUI avviene sull'EDT di Swing
         SwingUtilities.invokeLater(() -> new GUI().setVisible(true));
     }
 }
