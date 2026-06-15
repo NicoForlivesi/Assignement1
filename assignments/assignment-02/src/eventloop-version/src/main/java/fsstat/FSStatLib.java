@@ -10,14 +10,10 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Libreria per il calcolo asincrono di statistiche sul filesystem.
- *
- * Approccio event-loop puro con Vert.x:
+ * Event-Loop:
  * - Nessun blocco, nessun thread esplicito: tutto il lavoro I/O è delegato
- *   ai worker thread interni di Vert.x (readDir, props), i risultati tornano
- *   sempre sull'event-loop tramite le callback.
- * - FSReport è mutabile ma sicuro: viene modificato solo dall'event-loop,
- *   che è single-thread, quindi nessuna race-condition.
+ * ai worker thread interni di Vert.x, gli handler però vengono sempre eseguiti dall'EL.
+ * - FSReport è mutabile ma sicuro: viene modificato solo dall'event-loop, quindi nessuna race-condition.
  */
 public class FSStatLib {
 
@@ -29,7 +25,6 @@ public class FSStatLib {
 
     /**
      * Calcola asincronamente le statistiche del filesystem di dir.
-     *
      * @param dir Directory radice da scansionare (ricorsivamente)
      * @param maxFS Dimensione massima considerata
      * @param nb Numero di fasce in cui suddividere
@@ -52,7 +47,7 @@ public class FSStatLib {
     }
 
     /**
-     * Chiude l'istanza Vert.x. Chiamare quando non si usa più la libreria.
+     * Chiude l'istanza Vert.x.
      */
     public void close() {
         vertx.close();
@@ -62,10 +57,9 @@ public class FSStatLib {
      * Scansione ricorsiva asincrona di una directory.
      *
      * Pipeline per ogni directory:
-     *   readDir => per ogni entry => se file: addFile, se dir: ricorsione.
-     *   Future.all() sulle entry fa il merge dei sotto-report, l'ultima future che si completa è
-     *   quella relativa al Future.all della directory radice
-     *
+     * readDir => per ogni entry => se file: addFile, se dir: ricorsione.
+     * Future.all() sulle entry fa il merge dei sotto-report, l'ultima future che si completa è
+     * quella relativa al Future.all della directory radice, c'è ricorsione quindi si "riassembla" bottom up.
      * Le chiamate I/O (readDir, props) sono non bloccanti: ritornano subito la future.
      * Tutte le entry di una directory vengono elaborate in parallelo.
      */

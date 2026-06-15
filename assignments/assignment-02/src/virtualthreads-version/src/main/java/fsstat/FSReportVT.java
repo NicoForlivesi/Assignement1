@@ -1,9 +1,5 @@
 package fsstat;
 
-/**
- * Report sulle statistiche del filesystem.
- * Versione usata per l'implementazione con Virtual Threads.
- */
 public class FSReportVT {
 
     private final long totalFiles;

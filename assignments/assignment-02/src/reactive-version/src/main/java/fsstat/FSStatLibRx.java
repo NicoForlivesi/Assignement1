@@ -15,9 +15,9 @@ public class FSStatLibRx {
     /**
      * Restituisce un Flowable che emette TUTTI i file presenti nella directory
      * (e sotto-directory), esclusi quelli filtrati.
-     * - È un flusso "cold": la scansione parte solo quando qualcuno chiama .subscribe().
-     * - Uso il metodo .defer() per evitare che la scansione parta subito.
-     * - Usiamo uno scheduler per la parallelizzazione della lettura delle directory.
+     * È un flusso "cold": la scansione parte solo quando il main chiama blockingSubscribe, uso il metodo .defer()
+     * per evitare che la scansione parta subito.
+     * Scheduler.io fatto apposta per I/O, per la parallelizzazione della lettura delle directory.
      */
     private Flowable<File> scanDir(File dir, Set<String> excluded) {
         return Flowable.defer(() -> // .defer serve a rimandare l'esecuzione della lambda fino al momento
@@ -45,8 +45,7 @@ public class FSStatLibRx {
     }
 
     /**
-     * Metodo principale dell’assignement:
-     * restituisce un Flowable che emette UN SOLO FSReportRx finale.
+     * Restituisce un Flowable che emette UN SOLO FSReportRx finale.
      */
     public Flowable<FSReportRx> getFSReport(String dir, long maxFS, int nb, Set<String> excluded) {
         return scanDir(new File(dir), excluded)

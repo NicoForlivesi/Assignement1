@@ -11,7 +11,7 @@ public class MainExampleRx {
         long maxFS = 1_000_000L;
         int nb = 5;
 
-        System.out.println("=== FSStatLibRx - Reactive Version ===");
+        System.out.println("FSStatLibRx (Reactive Version)");
         System.out.printf("Directory: %s%nMaxFS: %,d bytes%nBands: %d%n%n",
                 targetDir, maxFS, nb);
 

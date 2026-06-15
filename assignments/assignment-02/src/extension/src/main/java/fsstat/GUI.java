@@ -4,11 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Set;
 
-/**
- * - La callback onUpdate arriva dall'event-loop di Vert.x
- * - Gli aggiornamenti alla GUI DEVONO passare per SwingUtilities.invokeLater()
- *   perché Swing è single-threaded sul proprio thread EDT.
- */
 public class GUI extends JFrame {
 
     private static final long DEFAULT_MAX_FS = 1_000_000L;

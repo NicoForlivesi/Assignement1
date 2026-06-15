@@ -11,22 +11,19 @@ public class FSStatLibVT {
     /**
      * Scansione ricorsiva parallela usando Virtual Threads.
      * Ogni directory viene scansionata in un virtual thread dedicato.
-     * - newVirtualThreadPerTaskExecutor() crea un executor che non riusa i thread:
-     *   ogni submit() crea un nuovo virtual thread.
+     * newVirtualThreadPerTaskExecutor crea un executor che non riusa i thread, ogni submit() crea un nuovo virtual thread.
      */
     public FSReportVT getFSReport(String dir, long maxFS, int nb, Set<String> excluded) {
         try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
             /**
-             * Qui parte la ricorsione. scanDir() ritorna un FSReportVT finale.
-             * L'executor rimane "aperto" per tutta la durata della ricorsione,
-             * così ogni sotto-directory può creare nuovi virtual threads.
+             * Qui parte la ricorsione. scanDir() ritorna un FSReportVT finale. L'executor rimane "aperto" per tutta la
+             * durata della ricorsione, così ogni sotto-directory può creare nuovi virtual threads.
              */
             return scanDir(new File(dir), excluded, maxFS, nb, executor);
         }
     }
 
     /**
-     * Metodo ricorsivo che scansiona una directory.
      * Ritorna un FSReportVT che rappresenta tutti i file sotto questa directory.
      */
     private FSReportVT scanDir(File dir, Set<String> excluded, long maxFS, int nb, ExecutorService executor) {
@@ -58,12 +55,12 @@ public class FSStatLibVT {
         }
 
         /**
-         * Combiniamo i risultati delle sotto-directory con f.get() che:
-         * - aspetta che il virtual thread abbia finito
-         * - ritorna il FSReportVT della sotto-directory
-         * poi report.merge(...):
-         * - unisce il report locale con quello della sotto-directory
-         * - crea un nuovo report immutabile
+         * Combiniamo i risultati delle sotto-directory con f.get che:
+         * -aspetta che il virtual thread abbia finito
+         * -ritorna il FSReportVT della sotto-directory
+         * poi report.merge:
+         * -unisce il report locale con quello della sotto-directory
+         * -crea un nuovo report immutabile
          */
         for (Future<FSReportVT> f : futures) {
             try {

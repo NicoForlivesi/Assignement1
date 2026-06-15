@@ -42,10 +42,8 @@ public class FSReportExt {
     }
 
     /**
-     * Restituisce una copia istantanea (snapshot) di questo report.
      * Usato dal timer periodico per passare alla GUI un'istanza immutabile
-     * del report corrente, evitando che la GUI legga dati parzialmente aggiornati
-     * mentre l'event-loop sta ancora modificando il report live.
+     * del report corrente.
      */
     public FSReportExt snapshot() {
         FSReportExt copy = new FSReportExt(nb, maxFS);
