@@ -110,7 +110,7 @@ object Main:
 
       def onlyPerimeterScenario(): Unit =
         /**
-         * In questo scenari attivo solo i sensori sul perimetro in questo modo tutti i sensori all'interno della
+         * In questo scenario attivo solo i sensori sul perimetro in questo modo tutti i sensori all'interno della
          * casa non fanno scattare l'allarme, per test simulo il trigger di 1 sensore per ogni zona non attiva e
          * infine il caso in cui sia rilevata una vera intrusione (quindi da uno dei sensori di movimento del perimetro
          * il che quindi fa scattare l'allarme).
@@ -128,10 +128,8 @@ object Main:
 
       def someoneTryingToGuessPin(): Unit =
         /**
-         * In questo scenari attivo solo i sensori sul perimetro in questo modo tutti i sensori all'interno della
-         * casa non fanno scattare l'allarme, per test simulo il trigger di 1 sensore per ogni zona non attiva e
-         * infine il caso in cui sia rilevata una vera intrusione (quindi da uno dei sensori di movimento del perimetro
-         * il che quindi fa scattare l'allarme).
+         Simulo il caso in cui un intruso tenti di inserire il pin per spegnere l'allarme ma non conoscendolo
+         non riesce a fermare l'allarme, quindi se il pin è sbagliato, l'allarme continua a suonare.
          */
         context.log.info("=== SCENARIO 5: L'intruso sbaglia pin e l'allarme suona ===")
         context.scheduleOnce(1.second, keypad, EnterPin("1234", allZones))
