@@ -30,7 +30,9 @@ public class GameListenerImpl implements GameListener {
             c = scanner.nextInt();
             scanner.nextLine();
             try {
-                service.makeMove(gameName, playerName, r, c);
+                service.makeMove(gameName, playerName, r, c); // Tutta la logica è incapsulata dentro "Game", i due
+                // giocatori si interfacciano solo col "GameService" che poi si occupa di risalire alla partita con
+                // associata la board ed effettuare le mosse "richieste" dai giocatori.
                 return; // move accepted
             } catch (RemoteException e) {
                 System.out.println("Invalid move: " + e.getMessage() + " Try again.");

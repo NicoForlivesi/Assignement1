@@ -25,7 +25,8 @@ public class GameServiceImpl implements GameService {
             if (!g.isWaiting()) { throw new RemoteException("Game '" + gameName + "' is already full."); }
         }
         System.out.println("[Server] " + playerName + " joined: " + gameName);
-        g.join(playerName, listener); // outside lock: starts the blocking turn chain
+        g.join(playerName, listener); // Chiamata fuori dal lock, esegue chiamate remote che possono bloccarsi,
+        // causando deadlock se fosse dentro il blocco synchronized
     }
 
     @Override

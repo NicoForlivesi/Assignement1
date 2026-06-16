@@ -16,6 +16,9 @@ public class RunServer {
             var stub = (GameService) UnicastRemoteObject.exportObject(service, 0);
 
             var registry = LocateRegistry.getRegistry();
+            // System.setProperty("java.rmi.server.hostname", "127.0.0.1"); per registry da codice
+            // Registry registry = LocateRegistry.createRegistry(1099); per creare registry dal codice,
+            // senza doverlo lanciare a parte nel terminale nel classpath
             registry.rebind(GAME_NAME, stub);
 
             System.out.println("[Server] Ready.");

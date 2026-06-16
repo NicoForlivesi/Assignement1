@@ -17,7 +17,7 @@ public class Board implements Serializable {
     }
 
     /** Ritorna "false" se la cella è occupata, altrimenti posiziona il simbolo nella cella e torna "true". */
-    public boolean set(int r, int c, String symbol) {
+    public boolean set(int r, int c, String symbol) { // Metodo chiamato sempre col lock su board.
         if (!cells[r][c].equals(EMPTY)) return false;
         cells[r][c] = symbol;
         return true;

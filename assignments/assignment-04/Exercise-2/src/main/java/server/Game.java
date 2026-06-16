@@ -65,7 +65,14 @@ class Game {
             opponent.receiveMessage("Game over: draw!");
             current.receiveMessage("Game over: draw!");
         } else {
-            opponent.passTurn(board); // passgio del turno all'avversario
+            opponent.passTurn(board); // Passgio del turno all'avversario, ogni turno aggiunge un "livello di annidamento"
+            // nello stack delle chiamate remote. È proprio questo il limite del modello sincrono di RMI.
+            /**
+             * RMI per sua natura è sincrono, ma per ogni chiamata remota sfrutta un nuovo thread dal pool di RMI,
+             * il "problema" qui è che per ogni partita avvengono più chiamate remote che ritornano solo alla fine
+             * della partita, in questo esercizio non è un problema visto che faccio giusto qualche partita in parallelo
+             * per testare, ma in un sistema reale sarebbe un problema.
+             * */
         }
     }
 }

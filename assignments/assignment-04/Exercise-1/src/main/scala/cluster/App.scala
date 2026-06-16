@@ -53,6 +53,7 @@ object App {
         }
       )
       // Riferimento logico al controller shardato è un EntityRef non un ActorRef, quindi usabile da qualsiasi nodo del sistema
+      // il cluster sharding si occuperà poi di trovare il nodo fisico su cui vive l'entità
       val controllerRef = sharding.entityRefFor(AlarmControllerEntity.TypeKey, "controller")
 
       // SENSORI (ne creo uno giusto per prova, la logica è la stessa del caso centralized)
